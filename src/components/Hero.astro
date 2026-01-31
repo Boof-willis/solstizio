@@ -7,47 +7,54 @@
     <div class="absolute inset-0 z-0">
         <!-- Bottom gradient only - fades to dark at bottom, transparent at top -->
         <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent z-10"></div>
+        <!-- Mobile Hero Image (optimized) -->
+        <img 
+            src="/images/mobile-hero.avif" 
+            class="w-full h-full object-cover opacity-60 md:hidden" 
+            alt="Luxury Interior"
+        >
+        <!-- Desktop Hero Image -->
         <img 
             src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2600&auto=format&fit=crop" 
-            class="w-full h-full object-cover opacity-60 hero-img scale-105" 
+            class="w-full h-full object-cover opacity-60 hero-img scale-105 hidden md:block" 
             alt="Luxury Interior"
         >
     </div>
 
     <div class="relative z-20 w-full max-w-[1400px] px-6 md:px-12 flex flex-col md:flex-row items-start md:items-end justify-between pb-12 md:pb-24 h-full pt-32 md:pt-0">
         <!-- Left Content -->
-        <div class="space-y-6 max-w-4xl mt-auto md:mt-0">
+        <div class="space-y-6 md:space-y-6 max-w-4xl mt-auto md:mt-0">
             <div class="overflow-hidden">
-                <p class="hero-label text-[10px] md:text-xs font-bold tracking-[0.2em] text-brand-gold uppercase mb-4 flex items-center gap-3">
-                    <span class="hero-line w-6 md:w-8 h-[1px] bg-brand-gold"></span>
+                <p class="hero-label text-xs md:text-xs font-bold tracking-[0.2em] text-brand-gold uppercase mb-4 flex items-center gap-3">
+                    <span class="hero-line w-8 md:w-8 h-[1px] bg-brand-gold"></span>
                     <span class="hero-label-text">Architectural Procurement</span>
                 </p>
             </div>
             
-            <h1 class="hero-title text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight leading-[0.95] text-white">
+            <h1 class="hero-title text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight leading-[0.95] text-white">
                 <span class="hero-word">Design</span> <span class="hero-word">that</span> <span class="hero-word">drives</span> <br>
                 <span class="text-brand-cream italic font-normal opacity-90 hero-word-italic">exponential yield.</span>
             </h1>
 
             <div class="hero-description max-w-md mt-6 md:mt-8 border-l border-white/20 pl-6">
-                <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed">
+                <p class="text-base md:text-base text-gray-300 font-light leading-relaxed">
                     We transform standard properties into top 1% revenue generators through data-driven interior architecture and turnkey furnishing.
                 </p>
             </div>
             
             <!-- Mobile CTA & Social Proof -->
-            <div class="md:hidden flex flex-col items-start gap-12 hero-mobile-cta">
-                <a href="#estimate" class="inline-block mt-4 border border-white/30 px-8 py-3 bg-white/5 backdrop-blur-md rounded-full">
-                    <span class="text-[10px] font-bold tracking-widest uppercase text-white">Get Estimate</span>
+            <div class="md:hidden flex flex-col items-start gap-10 hero-mobile-cta">
+                <a href="#estimate" class="inline-block mt-4 border border-white/30 px-10 py-4 bg-white/5 backdrop-blur-md rounded-full">
+                    <span class="text-xs font-bold tracking-widest uppercase text-white">Get Estimate</span>
                 </a>
 
-                <div class="flex items-center gap-6">
-                    <span class="text-[9px] uppercase tracking-widest opacity-50 text-white">Curated For</span>
-                    <div class="h-[1px] w-8 bg-white/20"></div>
-                    <div class="flex items-center gap-4 opacity-80">
-                        <img src="/images/airbnb-1.svg" alt="Airbnb" class="h-4 w-auto brightness-0 invert">
-                        <img src="/images/Vrbo.svg" alt="VRBO" class="h-3 w-auto brightness-0 invert">
-                        <img src="/images/bookingcom-1 (1).svg" alt="Booking.com" class="h-3 w-auto">
+                <div class="flex items-center gap-4">
+                    <span class="text-[11px] uppercase tracking-widest opacity-50 text-white">Curated For</span>
+                    <div class="h-[1px] w-6 bg-white/20"></div>
+                    <div class="flex items-center gap-6 opacity-80">
+                        <img src="/images/airbnb-1.svg" alt="Airbnb" class="h-6 w-auto brightness-0 invert">
+                        <img src="/images/bookingcom-1 (1).svg" alt="Booking.com" class="h-5 w-auto">
+                        <img src="/images/Vrbo.svg" alt="VRBO" class="h-5 w-auto brightness-0 invert">
                     </div>
                 </div>
             </div>
@@ -57,10 +64,10 @@
         <div class="hidden md:flex flex-col items-end gap-4 hero-right">
             <div class="flex items-center gap-6 hero-logos">
                 <span class="text-[10px] uppercase tracking-widest opacity-50 text-white">Curated For</span>
-                <div class="flex items-center gap-5 opacity-70 stagger-fade">
+                <div class="flex items-center gap-7 opacity-70 stagger-fade">
                     <img src="/images/airbnb-1.svg" alt="Airbnb" class="h-5 w-auto brightness-0 invert hover:opacity-100 transition-opacity duration-500">
-                    <img src="/images/Vrbo.svg" alt="VRBO" class="h-4 w-auto brightness-0 invert hover:opacity-100 transition-opacity duration-500">
                     <img src="/images/bookingcom-1 (1).svg" alt="Booking.com" class="h-4 w-auto hover:opacity-100 transition-opacity duration-500">
+                    <img src="/images/Vrbo.svg" alt="VRBO" class="h-4 w-auto brightness-0 invert hover:opacity-100 transition-opacity duration-500">
                 </div>
             </div>
             
@@ -81,14 +88,20 @@
 </header>
 
 <style>
-    /* Hero Image Ken Burns Effect */
+    /* Hero Image Ken Burns Effect - Desktop only for performance */
     @keyframes heroZoom {
         0% { transform: scale(1.05); }
         100% { transform: scale(1.15); }
     }
     
     .hero-img {
-        animation: heroZoom 20s infinite alternate;
+        animation: none;
+    }
+    
+    @media (min-width: 768px) {
+        .hero-img {
+            animation: heroZoom 20s infinite alternate;
+        }
     }
     
     /* Hero Label Animation */
