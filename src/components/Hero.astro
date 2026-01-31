@@ -1,0 +1,190 @@
+---
+// Hero section component
+---
+
+<header class="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden">
+    <!-- Background Image -->
+    <div class="absolute inset-0 z-0">
+        <!-- Bottom gradient only - fades to dark at bottom, transparent at top -->
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent z-10"></div>
+        <img 
+            src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2600&auto=format&fit=crop" 
+            class="w-full h-full object-cover opacity-60 hero-img scale-105" 
+            alt="Luxury Interior"
+        >
+    </div>
+
+    <div class="relative z-20 w-full max-w-[1400px] px-6 md:px-12 flex flex-col md:flex-row items-start md:items-end justify-between pb-12 md:pb-24 h-full pt-32 md:pt-0">
+        <!-- Left Content -->
+        <div class="space-y-6 max-w-4xl mt-auto md:mt-0">
+            <div class="overflow-hidden">
+                <p class="hero-label text-[10px] md:text-xs font-bold tracking-[0.2em] text-brand-gold uppercase mb-4 flex items-center gap-3">
+                    <span class="hero-line w-6 md:w-8 h-[1px] bg-brand-gold"></span>
+                    <span class="hero-label-text">Architectural Procurement</span>
+                </p>
+            </div>
+            
+            <h1 class="hero-title text-4xl xs:text-5xl md:text-7xl lg:text-8xl font-serif font-light tracking-tight leading-[0.95] text-white">
+                <span class="hero-word">Design</span> <span class="hero-word">that</span> <span class="hero-word">drives</span> <br>
+                <span class="text-brand-cream italic font-normal opacity-90 hero-word-italic">exponential yield.</span>
+            </h1>
+
+            <div class="hero-description max-w-md mt-6 md:mt-8 border-l border-white/20 pl-6">
+                <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed">
+                    We transform standard properties into top 1% revenue generators through data-driven interior architecture and turnkey furnishing.
+                </p>
+            </div>
+            
+            <!-- Mobile CTA & Social Proof -->
+            <div class="md:hidden flex flex-col items-start gap-12 hero-mobile-cta">
+                <a href="#estimate" class="inline-block mt-4 border border-white/30 px-8 py-3 bg-white/5 backdrop-blur-md rounded-full">
+                    <span class="text-[10px] font-bold tracking-widest uppercase text-white">Get Estimate</span>
+                </a>
+
+                <div class="flex items-center gap-6">
+                    <span class="text-[9px] uppercase tracking-widest opacity-50 text-white">Curated For</span>
+                    <div class="h-[1px] w-8 bg-white/20"></div>
+                    <div class="flex items-center gap-4 opacity-80">
+                        <img src="/images/airbnb-1.svg" alt="Airbnb" class="h-4 w-auto brightness-0 invert">
+                        <img src="/images/Vrbo.svg" alt="VRBO" class="h-3 w-auto brightness-0 invert">
+                        <img src="/images/bookingcom-1 (1).svg" alt="Booking.com" class="h-3 w-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Desktop Right Column -->
+        <div class="hidden md:flex flex-col items-end gap-4 hero-right">
+            <div class="flex items-center gap-6 hero-logos">
+                <span class="text-[10px] uppercase tracking-widest opacity-50 text-white">Curated For</span>
+                <div class="flex items-center gap-5 opacity-70 stagger-fade">
+                    <img src="/images/airbnb-1.svg" alt="Airbnb" class="h-5 w-auto brightness-0 invert hover:opacity-100 transition-opacity duration-500">
+                    <img src="/images/Vrbo.svg" alt="VRBO" class="h-4 w-auto brightness-0 invert hover:opacity-100 transition-opacity duration-500">
+                    <img src="/images/bookingcom-1 (1).svg" alt="Booking.com" class="h-4 w-auto hover:opacity-100 transition-opacity duration-500">
+                </div>
+            </div>
+            
+            <a href="#estimate" class="hero-cta-button h-24 w-24 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-700 group backdrop-blur-sm cursor-pointer mt-4 relative overflow-hidden">
+                <span class="absolute inset-0 bg-white transform scale-0 group-hover:scale-100 transition-transform duration-700 rounded-full origin-center"></span>
+                <span class="relative z-10 text-[10px] uppercase font-bold tracking-widest text-center text-white group-hover:text-black transition-colors duration-500">
+                    Get<br>Estimate
+                </span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center gap-2 scroll-indicator">
+        <span class="text-[9px] uppercase tracking-widest text-white/40">Scroll</span>
+        <div class="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent scroll-line"></div>
+    </div>
+</header>
+
+<style>
+    /* Hero Image Ken Burns Effect */
+    @keyframes heroZoom {
+        0% { transform: scale(1.05); }
+        100% { transform: scale(1.15); }
+    }
+    
+    .hero-img {
+        animation: heroZoom 20s infinite alternate;
+    }
+    
+    /* Hero Label Animation */
+    .hero-line {
+        transform: scaleX(0);
+        transform-origin: left;
+        animation: lineReveal 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+    
+    @keyframes lineReveal {
+        to { transform: scaleX(1); }
+    }
+    
+    .hero-label-text {
+        opacity: 0;
+        transform: translateX(-10px);
+        animation: labelReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    }
+    
+    @keyframes labelReveal {
+        to { 
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+    
+    /* Hero Title Word Animation */
+    .hero-word {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: wordReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    .hero-word:nth-child(1) { animation-delay: 0.4s; }
+    .hero-word:nth-child(2) { animation-delay: 0.5s; }
+    .hero-word:nth-child(3) { animation-delay: 0.6s; }
+    
+    .hero-word-italic {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(40px);
+        animation: wordReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+    
+    @keyframes wordReveal {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Hero Description Animation */
+    .hero-description {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+    }
+    
+    @keyframes fadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Hero Right Side Animation */
+    .hero-right {
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.4s forwards;
+    }
+    
+    .hero-mobile-cta {
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.3s forwards;
+    }
+    
+    /* Scroll Indicator Animation */
+    .scroll-indicator {
+        opacity: 0;
+        animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 2s forwards;
+    }
+    
+    .scroll-line {
+        animation: scrollPulse 2s ease-in-out infinite;
+    }
+    
+    @keyframes scrollPulse {
+        0%, 100% { 
+            opacity: 0.4;
+            transform: scaleY(1);
+        }
+        50% { 
+            opacity: 0.8;
+            transform: scaleY(1.2);
+        }
+    }
+    
+</style>

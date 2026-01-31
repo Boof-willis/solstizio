@@ -1,0 +1,93 @@
+---
+// Philosophy section component
+---
+
+<section class="py-16 md:py-32 px-4 md:px-12 bg-brand-black philosophy-section overflow-hidden">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
+        <div class="lg:col-span-7">
+            <h2 class="philosophy-heading text-3xl sm:text-4xl md:text-6xl font-serif font-light leading-[1.15] md:leading-[1.1] tracking-tight">
+                <span class="philosophy-line block overflow-hidden">
+                    <span class="philosophy-word text-brand-cream">Guests don't book bedrooms.</span>
+                </span>
+                <span class="philosophy-line block overflow-hidden">
+                    <span class="philosophy-word text-brand-muted">They book aspirations.</span>
+                </span>
+            </h2>
+        </div>
+        <div class="lg:col-span-5 flex flex-col justify-end space-y-6 md:space-y-8">
+            <p class="philosophy-text text-base md:text-lg font-light text-gray-400 leading-relaxed">
+                The short-term rental market has matured. The days of "fast furniture" are over. To command premium nightly rates, your property requires a narrative-driven aesthetic that stops the scroll.
+            </p>
+            <div class="philosophy-tag flex items-center gap-3 md:gap-4">
+                <div class="philosophy-tag-line h-[1px] w-8 md:w-12 bg-brand-gold"></div>
+                <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold">The Solstizio Standard</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .philosophy-word {
+        display: inline-block;
+        transform: translateY(100%);
+        transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .philosophy-section.in-view .philosophy-word {
+        transform: translateY(0);
+    }
+    
+    .philosophy-section.in-view .philosophy-line:nth-child(2) .philosophy-word {
+        transition-delay: 0.15s;
+    }
+    
+    .philosophy-text {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+    }
+    
+    .philosophy-section.in-view .philosophy-text {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .philosophy-tag {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s;
+    }
+    
+    .philosophy-section.in-view .philosophy-tag {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    .philosophy-tag-line {
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s;
+    }
+    
+    .philosophy-section.in-view .philosophy-tag-line {
+        transform: scaleX(1);
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+        const section = document.querySelector('.philosophy-section');
+        
+        if (section) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(section);
+        }
+    });
+</script>

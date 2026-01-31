@@ -1,0 +1,91 @@
+---
+// Footer component
+---
+
+<footer class="bg-brand-black border-t border-brand-border py-10 md:py-16 px-4 md:px-12 footer-section">
+    <div class="max-w-[1400px] mx-auto flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
+        <div class="footer-left text-center md:text-left">
+            <a href="#" class="block group">
+                <img src="/images/solstizio-logo-white.webp" alt="Solstizio Studios" class="w-[80px] md:w-[100px] h-auto mx-auto md:mx-0 transition-all duration-500 group-hover:opacity-80">
+            </a>
+            <p class="text-[9px] md:text-[10px] text-gray-600 uppercase tracking-widest mt-3 md:mt-4">© 2026 Solstizio Studios Inc.</p>
+        </div>
+
+        <div class="footer-links flex gap-6 md:gap-8">
+            <a href="#" class="footer-link text-[10px] text-gray-500 hover:text-brand-gold uppercase tracking-widest transition-all duration-300 relative group">
+                <span>Instagram</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#" class="footer-link text-[10px] text-gray-500 hover:text-brand-gold uppercase tracking-widest transition-all duration-300 relative group">
+                <span>LinkedIn</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+            <a href="#" class="footer-link text-[10px] text-gray-500 hover:text-brand-gold uppercase tracking-widest transition-all duration-300 relative group">
+                <span>Pinterest</span>
+                <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-brand-gold group-hover:w-full transition-all duration-300"></span>
+            </a>
+        </div>
+    </div>
+    
+    <!-- Back to top -->
+    <div class="max-w-[1400px] mx-auto mt-8 md:mt-12 pt-6 border-t border-brand-border/50 flex justify-center">
+        <a href="#" class="back-to-top text-[9px] text-gray-600 uppercase tracking-widest hover:text-gray-400 transition-colors duration-300 flex items-center gap-2 group">
+            <iconify-icon icon="solar:arrow-up-linear" width="12" class="group-hover:-translate-y-1 transition-transform duration-300"></iconify-icon>
+            <span>Back to Top</span>
+        </a>
+    </div>
+</footer>
+
+<style>
+    .footer-left {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    .footer-section.in-view .footer-left {
+        animation: footerReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    
+    .footer-links {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    .footer-section.in-view .footer-links {
+        animation: footerReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    }
+    
+    .back-to-top {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    
+    .footer-section.in-view .back-to-top {
+        animation: footerReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+    
+    @keyframes footerReveal {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+        const footer = document.querySelector('.footer-section');
+        
+        if (footer) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(footer);
+        }
+    });
+</script>

@@ -1,0 +1,389 @@
+---
+// Exit Intent Popup Component
+---
+
+<!-- Exit Intent Popup Overlay -->
+<div id="exit-popup" class="exit-popup-hidden">
+    <!-- Backdrop -->
+    <div class="exit-popup-backdrop" id="exit-popup-backdrop"></div>
+    
+    <!-- Modal -->
+    <div class="exit-popup-modal">
+        <div class="exit-popup-content">
+            <!-- Close Button -->
+            <button id="exit-popup-close" class="exit-popup-close" aria-label="Close popup">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <!-- Content -->
+            <div class="exit-popup-header">
+                <span class="exit-popup-label">Wait — Before You Go</span>
+                <h3 class="exit-popup-title">Get Your Free ROI Estimate</h3>
+                <p class="exit-popup-desc">
+                    Discover how much more your property could earn with professional design. Takes 30 seconds.
+                </p>
+            </div>
+            
+            <!-- Form -->
+            <form id="exit-popup-form" class="exit-popup-form">
+                <div class="exit-popup-field">
+                    <input 
+                        type="email" 
+                        id="exit-email" 
+                        required 
+                        placeholder="your@email.com"
+                        class="exit-popup-input"
+                    >
+                    <label for="exit-email" class="exit-popup-input-label">Email Address</label>
+                </div>
+                
+                <div class="exit-popup-field">
+                    <input 
+                        type="text" 
+                        id="exit-property" 
+                        placeholder="City, State"
+                        class="exit-popup-input"
+                    >
+                    <label for="exit-property" class="exit-popup-input-label">Property Location (Optional)</label>
+                </div>
+                
+                <button type="submit" class="exit-popup-submit">
+                    Send My Free Estimate
+                </button>
+                
+                <p class="exit-popup-disclaimer">
+                    No spam. Unsubscribe anytime.
+                </p>
+            </form>
+            
+            <!-- Skip Link -->
+            <button id="exit-popup-skip" class="exit-popup-skip">
+                No thanks, I'll pass on the free estimate
+            </button>
+        </div>
+    </div>
+</div>
+
+<style is:global>
+    .exit-popup-hidden {
+        display: none !important;
+    }
+    
+    #exit-popup {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+    
+    .exit-popup-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        backdrop-filter: blur(4px);
+    }
+    
+    .exit-popup-modal {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        max-width: 480px;
+    }
+    
+    .exit-popup-content {
+        background: #0A0A0A;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        position: relative;
+    }
+    
+    @media (min-width: 768px) {
+        .exit-popup-content {
+            padding: 3rem;
+        }
+    }
+    
+    .exit-popup-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        color: #666;
+        cursor: pointer;
+        padding: 0.5rem;
+        transition: color 0.2s;
+    }
+    
+    .exit-popup-close:hover {
+        color: #fff;
+    }
+    
+    .exit-popup-header {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    
+    .exit-popup-label {
+        display: block;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #8A9A7B;
+        margin-bottom: 0.75rem;
+    }
+    
+    .exit-popup-title {
+        font-family: 'Newsreader', serif;
+        font-size: 1.75rem;
+        color: #fff;
+        margin: 0 0 1rem 0;
+        font-weight: 400;
+    }
+    
+    @media (min-width: 768px) {
+        .exit-popup-title {
+            font-size: 2rem;
+        }
+    }
+    
+    .exit-popup-desc {
+        font-size: 0.875rem;
+        color: #888;
+        margin: 0;
+        font-weight: 300;
+        max-width: 320px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+    
+    .exit-popup-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    
+    .exit-popup-field {
+        position: relative;
+    }
+    
+    .exit-popup-input {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        padding: 0.875rem 1rem;
+        color: #fff;
+        font-size: 0.875rem;
+        transition: border-color 0.2s;
+    }
+    
+    .exit-popup-input:focus {
+        outline: none;
+        border-color: #8A9A7B;
+    }
+    
+    .exit-popup-input::placeholder {
+        color: #555;
+    }
+    
+    .exit-popup-input-label {
+        position: absolute;
+        left: 1rem;
+        top: -0.5rem;
+        font-size: 9px;
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        color: #666;
+        background: #0A0A0A;
+        padding: 0 0.25rem;
+    }
+    
+    .exit-popup-submit {
+        width: 100%;
+        background: #8A9A7B;
+        border: none;
+        color: #000;
+        padding: 1rem;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        cursor: pointer;
+        transition: background 0.2s;
+        margin-top: 0.5rem;
+    }
+    
+    .exit-popup-submit:hover {
+        background: #7a8a6b;
+    }
+    
+    .exit-popup-disclaimer {
+        font-size: 10px;
+        color: #555;
+        text-align: center;
+        margin: 0;
+    }
+    
+    .exit-popup-skip {
+        display: block;
+        width: 100%;
+        background: none;
+        border: none;
+        color: #555;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 1rem;
+        margin-top: 0.5rem;
+        transition: color 0.2s;
+    }
+    
+    .exit-popup-skip:hover {
+        color: #999;
+    }
+    
+    .exit-popup-success {
+        text-align: center;
+        padding: 2rem 0;
+    }
+    
+    .exit-popup-success svg {
+        color: #8A9A7B;
+        margin-bottom: 1rem;
+    }
+    
+    .exit-popup-success h4 {
+        font-family: 'Newsreader', serif;
+        font-size: 1.5rem;
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+    }
+    
+    .exit-popup-success p {
+        font-size: 0.875rem;
+        color: #888;
+        margin: 0;
+    }
+</style>
+
+<script is:inline>
+(function() {
+    // Wait for DOM
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initExitPopup);
+    } else {
+        initExitPopup();
+    }
+    
+    function initExitPopup() {
+        const popup = document.getElementById('exit-popup');
+        const backdrop = document.getElementById('exit-popup-backdrop');
+        const closeBtn = document.getElementById('exit-popup-close');
+        const skipBtn = document.getElementById('exit-popup-skip');
+        const form = document.getElementById('exit-popup-form');
+        
+        if (!popup) {
+            console.error('Exit popup element not found');
+            return;
+        }
+        
+        let hasShown = false;
+        
+        // Check session storage
+        try {
+            if (sessionStorage.getItem('exitPopupShown') === 'true') {
+                hasShown = true;
+            }
+        } catch(e) {}
+        
+        function showPopup() {
+            if (hasShown) return;
+            hasShown = true;
+            
+            try {
+                sessionStorage.setItem('exitPopupShown', 'true');
+            } catch(e) {}
+            
+            popup.classList.remove('exit-popup-hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hidePopup() {
+            popup.classList.add('exit-popup-hidden');
+            document.body.style.overflow = '';
+        }
+        
+        // Exit intent - mouse leaves at top
+        document.addEventListener('mouseout', function(e) {
+            // Check if mouse left through top of window
+            if (e.clientY <= 5 && e.relatedTarget === null) {
+                showPopup();
+            }
+        });
+        
+        // Also trigger on visibility change (tab switching)
+        document.addEventListener('visibilitychange', function() {
+            if (document.visibilityState === 'hidden') {
+                // User is leaving/switching tabs - show on return
+                if (!hasShown) {
+                    document.addEventListener('visibilitychange', function onReturn() {
+                        if (document.visibilityState === 'visible') {
+                            document.removeEventListener('visibilitychange', onReturn);
+                            setTimeout(showPopup, 500);
+                        }
+                    });
+                }
+            }
+        });
+        
+        // Close handlers
+        closeBtn?.addEventListener('click', hidePopup);
+        backdrop?.addEventListener('click', hidePopup);
+        skipBtn?.addEventListener('click', hidePopup);
+        
+        // Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && !popup.classList.contains('exit-popup-hidden')) {
+                hidePopup();
+            }
+        });
+        
+        // Form submit
+        form?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formContainer = form.parentElement;
+            formContainer.querySelector('.exit-popup-form').outerHTML = `
+                <div class="exit-popup-success">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <h4>Thank You!</h4>
+                    <p>We'll send your estimate within 24 hours.</p>
+                </div>
+            `;
+            
+            // Hide skip button
+            const skip = formContainer.querySelector('.exit-popup-skip');
+            if (skip) skip.style.display = 'none';
+            
+            setTimeout(hidePopup, 3000);
+        });
+        
+        // Debug: Allow manual trigger via console or Shift+E
+        window.showExitPopup = function() {
+            hasShown = false; // Reset to allow showing
+            showPopup();
+        };
+        window.hideExitPopup = hidePopup;
+        
+    }
+})();
+</script>

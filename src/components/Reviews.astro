@@ -1,0 +1,136 @@
+---
+// Reviews section component
+---
+
+<section id="reviews" class="py-16 md:py-32 px-4 md:px-6 bg-brand-black relative overflow-hidden reviews-section">
+    <!-- Decorative abstract shape with pulse -->
+    <div class="reviews-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-brand-gold/5 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"></div>
+
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+        <!-- Star icon -->
+        <div class="review-icon flex justify-center mb-6 md:mb-8">
+            <iconify-icon icon="solar:star-fall-minimalistic-2-linear" class="text-brand-gold" width="28"></iconify-icon>
+        </div>
+        
+        <!-- Quote text with word-by-word reveal -->
+        <h3 class="review-quote text-2xl sm:text-3xl md:text-5xl font-serif italic text-white leading-tight mb-6 md:mb-8 px-2">
+            <span class="review-word">Solstizio</span> <span class="review-word">didn't</span> <span class="review-word">just</span> <span class="review-word">furnish</span> <span class="review-word">our</span> <span class="review-word">property;</span> <span class="review-word">they</span> <span class="review-word">created</span> <span class="review-word">a</span> <span class="review-word">brand.</span> <span class="review-word">We</span> <span class="review-word">secured</span> <span class="review-word review-highlight">$125k</span> <span class="review-word">in</span> <span class="review-word">bookings</span> <span class="review-word">in</span> <span class="review-word">our</span> <span class="review-word">first</span> <span class="review-word review-highlight">90 days.</span>
+        </h3>
+        
+        <!-- Attribution -->
+        <div class="review-attribution flex flex-col items-center gap-1 md:gap-2">
+            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-cream">Jameson & Co. Capital</span>
+            <span class="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-muted">Paradise Valley, AZ</span>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Glow pulse animation */
+    .reviews-glow {
+        animation: glowPulse 8s ease-in-out infinite;
+    }
+    
+    @keyframes glowPulse {
+        0%, 100% { 
+            opacity: 0.5;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        50% { 
+            opacity: 0.8;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+    }
+    
+    /* Icon animation */
+    .review-icon {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    
+    .reviews-section.in-view .review-icon {
+        animation: iconSpin 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+    
+    @keyframes iconSpin {
+        to {
+            opacity: 1;
+            transform: scale(1) rotate(0deg);
+        }
+    }
+    
+    /* Word-by-word reveal */
+    .review-word {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .reviews-section.in-view .review-word {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    /* Stagger the word animations */
+    .reviews-section.in-view .review-word:nth-child(1) { transition-delay: 0.3s; }
+    .reviews-section.in-view .review-word:nth-child(2) { transition-delay: 0.35s; }
+    .reviews-section.in-view .review-word:nth-child(3) { transition-delay: 0.4s; }
+    .reviews-section.in-view .review-word:nth-child(4) { transition-delay: 0.45s; }
+    .reviews-section.in-view .review-word:nth-child(5) { transition-delay: 0.5s; }
+    .reviews-section.in-view .review-word:nth-child(6) { transition-delay: 0.55s; }
+    .reviews-section.in-view .review-word:nth-child(7) { transition-delay: 0.6s; }
+    .reviews-section.in-view .review-word:nth-child(8) { transition-delay: 0.65s; }
+    .reviews-section.in-view .review-word:nth-child(9) { transition-delay: 0.7s; }
+    .reviews-section.in-view .review-word:nth-child(10) { transition-delay: 0.75s; }
+    .reviews-section.in-view .review-word:nth-child(11) { transition-delay: 0.8s; }
+    .reviews-section.in-view .review-word:nth-child(12) { transition-delay: 0.85s; }
+    .reviews-section.in-view .review-word:nth-child(13) { transition-delay: 0.9s; }
+    .reviews-section.in-view .review-word:nth-child(14) { transition-delay: 0.95s; }
+    .reviews-section.in-view .review-word:nth-child(15) { transition-delay: 1s; }
+    .reviews-section.in-view .review-word:nth-child(16) { transition-delay: 1.05s; }
+    .reviews-section.in-view .review-word:nth-child(17) { transition-delay: 1.1s; }
+    .reviews-section.in-view .review-word:nth-child(18) { transition-delay: 1.15s; }
+    .reviews-section.in-view .review-word:nth-child(19) { transition-delay: 1.2s; }
+    .reviews-section.in-view .review-word:nth-child(20) { transition-delay: 1.25s; }
+    
+    /* Highlight important numbers */
+    .review-highlight {
+        color: #8A9A7B;
+    }
+    
+    /* Attribution animation */
+    .review-attribution {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    
+    .reviews-section.in-view .review-attribution {
+        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+    }
+    
+    @keyframes fadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+        const section = document.querySelector('.reviews-section');
+        
+        if (section) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            observer.observe(section);
+        }
+    });
+</script>

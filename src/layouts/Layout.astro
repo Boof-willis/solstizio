@@ -1,0 +1,378 @@
+---
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..600&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script is:inline src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Iconify -->
+    <script is:inline src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+</head>
+
+<body class="bg-brand-black text-brand-cream selection:bg-brand-gold/30 selection:text-white antialiased overflow-x-hidden">
+    <!-- Noise Texture for cinematic feel -->
+    <div class="noise-overlay"></div>
+    
+    <slot />
+    
+    <!-- AOS Init -->
+    <script is:inline>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    once: true,
+                    duration: 1000,
+                    offset: 50,
+                    easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+<style is:global>
+    /* Typography refinements */
+    body { 
+        font-family: 'Inter', sans-serif; 
+        font-weight: 300; 
+    }
+    
+    h1, h2, h3, h4, h5, h6, .font-serif { 
+        font-family: 'Newsreader', serif; 
+    }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #050505; }
+    ::-webkit-scrollbar-thumb { background-color: #333; border-radius: 2px; }
+    
+    /* ==========================================
+       HIGH-END ANIMATION SYSTEM
+       ========================================== */
+    
+    /* Smooth Cubic Bezier Easings */
+    :root {
+        --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+        --ease-in-out-circ: cubic-bezier(0.85, 0, 0.15, 1);
+        --ease-elastic: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    }
+    
+    /* Line Reveal Animation */
+    .line-reveal {
+        position: relative;
+        overflow: hidden;
+    }
+    .line-reveal::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background: currentColor;
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.6s var(--ease-out-expo);
+    }
+    .line-reveal:hover::after {
+        transform: scaleX(1);
+        transform-origin: left;
+    }
+    
+    /* Magnetic Hover Effect for Buttons/Links */
+    .magnetic-hover {
+        transition: transform 0.3s var(--ease-out-expo);
+    }
+    
+    /* Split Text Animation */
+    .split-line {
+        overflow: hidden;
+        display: block;
+    }
+    .split-line > span {
+        display: inline-block;
+        transform: translateY(100%);
+        opacity: 0;
+        animation: splitReveal 1.2s var(--ease-out-expo) forwards;
+    }
+    @keyframes splitReveal {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    
+    /* Staggered Children Animation */
+    .stagger-fade > * {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: staggerIn 0.8s var(--ease-out-expo) forwards;
+    }
+    .stagger-fade > *:nth-child(1) { animation-delay: 0.1s; }
+    .stagger-fade > *:nth-child(2) { animation-delay: 0.2s; }
+    .stagger-fade > *:nth-child(3) { animation-delay: 0.3s; }
+    .stagger-fade > *:nth-child(4) { animation-delay: 0.4s; }
+    .stagger-fade > *:nth-child(5) { animation-delay: 0.5s; }
+    
+    @keyframes staggerIn {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Image Hover Effect - Enhanced */
+    .img-zoom-container { 
+        overflow: hidden;
+        position: relative;
+    }
+    .img-zoom-container::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 50%);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.6s var(--ease-out-expo);
+    }
+    .group:hover .img-zoom-container::before {
+        opacity: 1;
+    }
+    .img-zoom {
+        transition: transform 1.8s var(--ease-out-expo), filter 1s var(--ease-out-expo);
+    }
+    .group:hover .img-zoom { 
+        transform: scale(1.08); 
+    }
+    
+    /* Clip Reveal Animation */
+    .clip-reveal {
+        clip-path: inset(0 100% 0 0);
+        animation: clipReveal 1.4s var(--ease-out-expo) forwards;
+    }
+    @keyframes clipReveal {
+        to {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+    
+    /* Fade Up Animation */
+    .fade-up {
+        opacity: 0;
+        transform: translateY(40px);
+        animation: fadeUp 1s var(--ease-out-expo) forwards;
+    }
+    @keyframes fadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Border Reveal Animation */
+    .border-reveal {
+        position: relative;
+    }
+    .border-reveal::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 1px;
+        width: 0;
+        background: rgba(255,255,255,0.1);
+        transition: width 1.2s var(--ease-out-expo);
+    }
+    .border-reveal.in-view::before {
+        width: 100%;
+    }
+    
+    /* Floating Animation (subtle) */
+    .float {
+        animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+    }
+    
+    /* Pulse Glow Animation */
+    .pulse-glow {
+        animation: pulseGlow 4s ease-in-out infinite;
+    }
+    @keyframes pulseGlow {
+        0%, 100% { opacity: 0.5; transform: scale(1); }
+        50% { opacity: 0.8; transform: scale(1.05); }
+    }
+    
+    /* Counter Animation Class */
+    .counter {
+        display: inline-block;
+    }
+    
+    /* Text Shimmer Effect */
+    .shimmer {
+        background: linear-gradient(
+            90deg,
+            #F2F0EB 0%,
+            #8A9A7B 50%,
+            #F2F0EB 100%
+        );
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer {
+        to { background-position: 200% center; }
+    }
+    
+    /* Smooth Parallax Container */
+    .parallax-container {
+        will-change: transform;
+    }
+    
+    /* Button Hover Effect */
+    .btn-luxury {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s var(--ease-out-expo);
+    }
+    .btn-luxury::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        transition: left 0.7s var(--ease-out-expo);
+    }
+    .btn-luxury:hover::before {
+        left: 100%;
+    }
+    
+    /* Underline Slide Animation */
+    .underline-slide {
+        position: relative;
+        display: inline-block;
+    }
+    .underline-slide::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 1px;
+        background: currentColor;
+        transition: width 0.4s var(--ease-out-expo);
+    }
+    .underline-slide:hover::after {
+        width: 100%;
+    }
+    
+    /* Scale In Animation */
+    .scale-in {
+        opacity: 0;
+        transform: scale(0.9);
+        animation: scaleIn 0.8s var(--ease-out-expo) forwards;
+    }
+    @keyframes scaleIn {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+    
+    /* Rotate In Animation */
+    .rotate-in {
+        opacity: 0;
+        transform: rotate(-5deg) translateY(20px);
+        animation: rotateIn 1s var(--ease-out-expo) forwards;
+    }
+    @keyframes rotateIn {
+        to {
+            opacity: 1;
+            transform: rotate(0) translateY(0);
+        }
+    }
+    
+    /* Smooth section transitions */
+    section {
+        transition: opacity 0.3s ease;
+    }
+    
+    /* Custom Input Styling */
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus {
+        -webkit-text-fill-color: #F2F0EB;
+        -webkit-box-shadow: 0 0 0px 1000px #0A0A0A inset;
+        transition: background-color 5000s ease-in-out 0s;
+    }
+    
+    /* Input Focus Animation */
+    .input-animated {
+        position: relative;
+    }
+    .input-animated::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 1px;
+        background: #8A9A7B;
+        transition: all 0.4s var(--ease-out-expo);
+    }
+    .input-animated:focus-within::after {
+        left: 0;
+        width: 100%;
+    }
+    
+    /* Subtle Noise Texture Overlay */
+    .noise-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.03;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    }
+    
+    /* Fallback for AOS */
+    [data-aos] {
+        opacity: 1 !important;
+        transform: none !important;
+    }
+    
+    /* Smooth scroll behavior enhancement */
+    @media (prefers-reduced-motion: no-preference) {
+        html {
+            scroll-behavior: smooth;
+        }
+    }
+</style>
