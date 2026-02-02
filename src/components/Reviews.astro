@@ -4,7 +4,9 @@
 
 <section id="reviews" class="py-16 md:py-32 px-4 md:px-6 bg-brand-black relative overflow-hidden reviews-section">
     <!-- Decorative abstract shape with pulse -->
-    <div class="reviews-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] bg-brand-gold/5 rounded-full blur-[80px] md:blur-[100px] pointer-events-none"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] pointer-events-none z-0">
+        <div class="reviews-glow w-full h-full bg-brand-gold/5 rounded-full blur-[80px] md:blur-[100px]"></div>
+    </div>
 
     <div class="max-w-4xl mx-auto text-center relative z-10">
         <!-- Star icon -->
@@ -29,16 +31,19 @@
     /* Glow pulse animation */
     .reviews-glow {
         animation: glowPulse 8s ease-in-out infinite;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        transform: translateZ(0);
     }
     
     @keyframes glowPulse {
         0%, 100% { 
             opacity: 0.5;
-            transform: translate(-50%, -50%) scale(1);
+            transform: scale(1);
         }
         50% { 
             opacity: 0.8;
-            transform: translate(-50%, -50%) scale(1.1);
+            transform: scale(1.1);
         }
     }
     
