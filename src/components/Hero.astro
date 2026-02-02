@@ -5,18 +5,18 @@
 <header class="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <!-- Bottom gradient only - fades to dark at bottom, transparent at top -->
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/40 to-transparent z-10"></div>
+        <!-- Gradient Overlay: Dark bottom -> 50% dark middle -> Light darker top for nav contrast -->
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-brand-black/20 z-10"></div>
         <!-- Mobile Hero Image (optimized) -->
         <img 
             src="/images/mobile-hero.avif" 
-            class="w-full h-full object-cover opacity-60 md:hidden" 
+            class="w-full h-full object-cover md:hidden" 
             alt="Luxury Interior"
         >
         <!-- Desktop Hero Image -->
         <img 
             src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2600&auto=format&fit=crop" 
-            class="w-full h-full object-cover opacity-60 hero-img scale-105 hidden md:block" 
+            class="w-full h-full object-cover hero-img scale-105 hidden md:block" 
             alt="Luxury Interior"
         >
     </div>
@@ -38,7 +38,7 @@
 
             <div class="hero-description max-w-md mt-6 md:mt-8 border-l border-white/20 pl-6">
                 <p class="text-base md:text-base text-gray-300 font-light leading-relaxed">
-                    We transform standard properties into top 1% revenue generators through data-driven interior architecture and turnkey furnishing.
+                    We transform properties into design-forward, experience-rich Airbnbs that consistently rank at the top of the market.
                 </p>
             </div>
             
