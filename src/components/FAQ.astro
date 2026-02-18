@@ -1,0 +1,185 @@
+---
+// FAQ section component
+const faqs = [
+    {
+        question: "How much does it cost?",
+        answer: "Our design and furnishing fee is based on the square footage of your property and the scope of work. Every project is different, so we put together a custom estimate after learning about your space and budget. Schedule a free consultation to get your numbers."
+    },
+    {
+        question: "What's included in the 6-week process?",
+        answer: "Everything. We handle interior design, furniture sourcing, decor procurement, shipment tracking, warehousing, on-site assembly, styling, and final photography prep. You provide the property — we do the rest."
+    },
+    {
+        question: "I'm new to short-term rentals. Is that okay?",
+        answer: "Absolutely — most of our clients are first-time STR investors. We'll walk you through exactly what guests expect, what performs well in your market, and how to set your listing up for great reviews from day one."
+    },
+    {
+        question: "Do I need to be local to the property?",
+        answer: "Not at all. We manage everything on-site so you don't have to be there. Many of our clients are out-of-state investors who hand us the keys and receive a fully styled, photo-ready property."
+    },
+    {
+        question: "Do I need to buy anything myself?",
+        answer: "No. We handle every purchase — furniture, decor, linens, kitchen essentials, and everything in between. You won't need to step foot in a store or place a single order. We take care of it all and deliver it fully installed."
+    }
+];
+---
+
+<section id="faq" class="py-16 md:py-24 px-4 md:px-12 bg-brand-black border-t border-brand-border faq-section">
+    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
+        <!-- Left Side -->
+        <div class="lg:col-span-4 faq-header">
+            <span class="faq-label text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold mb-3 md:mb-4 block">Common Questions</span>
+            <h3 class="faq-title text-3xl md:text-4xl lg:text-5xl font-serif leading-tight md:leading-none text-white">
+                <span class="block overflow-hidden">
+                    <span class="faq-title-line">We have</span>
+                </span>
+                <span class="block overflow-hidden">
+                    <span class="faq-title-line">answers.</span>
+                </span>
+            </h3>
+            <p class="faq-desc mt-4 md:mt-8 text-sm text-gray-400 font-light leading-relaxed">
+                New to the STR space? No worries. Here are the questions we hear most from first-time investors.
+            </p>
+        </div>
+
+        <!-- Right Side (Accordion) -->
+        <div class="lg:col-span-8 space-y-0">
+            {faqs.map((faq, index) => (
+                <div 
+                    class="faq-item group border-b border-brand-border"
+                    style={`--faq-delay: ${index * 0.1}s`}
+                >
+                    <button 
+                        class="faq-trigger w-full flex items-center justify-between py-5 md:py-7 text-left gap-4 cursor-pointer"
+                        aria-expanded="false"
+                    >
+                        <h4 class="text-base md:text-lg font-serif text-white group-hover:text-brand-cream transition-colors duration-300">{faq.question}</h4>
+                        <span class="faq-icon text-brand-gold shrink-0 transition-transform duration-500">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <line class="faq-icon-h" x1="0" y1="8" x2="16" y2="8" stroke="currentColor" stroke-width="1.5"/>
+                                <line class="faq-icon-v" x1="8" y1="0" x2="8" y2="16" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        </span>
+                    </button>
+                    <div class="faq-answer overflow-hidden max-h-0 transition-all duration-500 ease-out">
+                        <p class="text-sm text-gray-400 font-light leading-relaxed pb-5 md:pb-7 pr-8 md:pr-12">
+                            {faq.answer}
+                        </p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .faq-header {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .faq-section.in-view .faq-header {
+        animation: faqFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .faq-title-line {
+        display: inline-block;
+        transform: translateY(100%);
+    }
+
+    .faq-section.in-view .faq-title-line {
+        animation: faqLineUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .faq-section.in-view .faq-title span:nth-child(2) .faq-title-line {
+        animation-delay: 0.1s;
+    }
+
+    .faq-label {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    .faq-section.in-view .faq-label {
+        animation: faqFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .faq-desc {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .faq-section.in-view .faq-desc {
+        animation: faqFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    }
+
+    .faq-item {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    .faq-section.in-view .faq-item {
+        animation: faqFadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: calc(0.2s + var(--faq-delay));
+    }
+
+    @keyframes faqFadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes faqLineUp {
+        to { transform: translateY(0); }
+    }
+
+    .faq-item.open .faq-icon-v {
+        transform: rotate(90deg);
+        opacity: 0;
+    }
+
+    .faq-icon-v {
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        transform-origin: center;
+    }
+
+    .faq-item.open .faq-answer {
+        max-height: 300px;
+    }
+</style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', function() {
+        const section = document.querySelector('.faq-section');
+
+        if (section) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('in-view');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(section);
+        }
+
+        document.querySelectorAll('.faq-trigger').forEach(button => {
+            button.addEventListener('click', function() {
+                const item = this.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+
+                document.querySelectorAll('.faq-item.open').forEach(openItem => {
+                    if (openItem !== item) {
+                        openItem.classList.remove('open');
+                        openItem.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                item.classList.toggle('open');
+                this.setAttribute('aria-expanded', !isOpen);
+            });
+        });
+    });
+</script>

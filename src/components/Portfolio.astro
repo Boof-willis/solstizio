@@ -2,35 +2,35 @@
 // Portfolio section component
 const projects = [
     {
-        title: "The Ocotillo Estate",
+        title: "The Showstopper Escape",
         location: "Scottsdale, AZ",
-        type: "Full Renovation",
-        image: "https://images.unsplash.com/photo-1600210492493-0946911123ea?q=80&w=2600&auto=format&fit=crop",
+        type: "Full Design & Install",
+        image: "/images/portfolio-showstopper.png",
         size: "large",
         delay: 0
     },
     {
-        title: "Casa Nera",
-        location: "Joshua Tree, CA",
-        type: "New Build",
-        image: "https://images.unsplash.com/photo-1615529162924-f8605388461d?q=80&w=2400&auto=format&fit=crop",
+        title: "Casa Serenity",
+        location: "Old Town, Scottsdale",
+        type: "Interior Design",
+        image: "/images/portfolio-casa-serenity.png",
         size: "portrait",
         delay: 100,
         offset: true
     },
     {
-        title: "Westlake Modern",
-        location: "Austin, TX",
-        type: "Interior Styling",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2000&auto=format&fit=crop",
+        title: "Luxe Waterfront Oasis",
+        location: "Florida",
+        type: "Turnkey Styling",
+        image: "/images/portfolio-waterfront-oasis.png",
         size: "portrait",
         delay: 0
     },
     {
-        title: "The Ridge",
-        location: "Aspen, CO",
-        type: "Turnkey Install",
-        image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2000&auto=format&fit=crop",
+        title: "Close To Downtown",
+        location: "Nashville, TN",
+        type: "Full Design & Install",
+        image: "/images/portfolio-downtown.png",
         size: "large",
         delay: 100,
         offset: true
@@ -49,7 +49,7 @@ const projects = [
         <!-- Mobile Grid (1 column) -->
         <div class="grid grid-cols-1 gap-6 md:hidden">
             {projects.map((project, index) => (
-                <div class="portfolio-card group cursor-pointer" style={`--card-delay: ${index * 0.1}s`}>
+                <div class="portfolio-card group" style={`--card-delay: ${index * 0.1}s`}>
                     <div class="portfolio-image-container img-zoom-container aspect-video bg-brand-panel relative rounded-sm overflow-hidden">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-700"></div>
                         <img src={project.image} class="w-full h-full object-cover img-zoom" alt={project.title}>
@@ -66,7 +66,7 @@ const projects = [
         <div class="hidden md:grid grid-cols-12 gap-8">
             {projects.map((project, index) => (
                 <div 
-                    class={`portfolio-card group cursor-pointer ${project.size === 'large' ? 'lg:col-span-7' : 'lg:col-span-5'} ${project.offset ? 'lg:mt-24' : ''}`}
+                    class={`portfolio-card group ${project.size === 'large' ? 'lg:col-span-7' : 'lg:col-span-5'} ${project.offset ? 'lg:mt-24' : ''}`}
                     style={`--card-delay: ${index * 0.15}s`}
                 >
                     <div class={`portfolio-image-container img-zoom-container ${project.size === 'large' ? 'aspect-[16/10]' : 'aspect-[3/4]'} bg-brand-panel relative`}>

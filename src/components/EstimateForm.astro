@@ -1,205 +1,644 @@
 ---
-// Estimate form section component
+// Project Estimator — multi-step wizard component
 ---
 
 <section id="estimate" class="py-16 md:py-24 px-4 md:px-12 bg-brand-panel border-t border-brand-border estimate-section">
-    <div class="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-32">
-        <!-- Left Side -->
-        <div class="estimate-left space-y-6 md:space-y-8">
-            <h2 class="estimate-title text-3xl sm:text-4xl md:text-6xl font-serif text-white">
-                <span class="block overflow-hidden">
-                    <span class="estimate-title-line">Project</span>
-                </span>
-                <span class="block overflow-hidden">
-                    <span class="estimate-title-line">Estimation</span>
-                </span>
-            </h2>
-            <p class="estimate-desc text-gray-400 font-light max-w-md text-sm md:text-base">
-                Tell us about your investment. We will provide a preliminary budget breakdown within 24 hours.
-            </p>
-            <div class="estimate-contact space-y-3 md:space-y-4 pt-4 md:pt-8">
-                <div class="flex items-center gap-3 md:gap-4 text-sm text-gray-500 hover:text-gray-300 transition-colors duration-300 cursor-pointer group">
-                    <iconify-icon icon="solar:letter-linear" width="18" class="group-hover:text-brand-gold transition-colors duration-300"></iconify-icon>
-                    <span>hello@solstizio.com</span>
-                </div>
-                <div class="flex items-center gap-3 md:gap-4 text-sm text-gray-500 hover:text-gray-300 transition-colors duration-300 cursor-pointer group">
-                    <iconify-icon icon="solar:phone-calling-linear" width="18" class="group-hover:text-brand-gold transition-colors duration-300"></iconify-icon>
-                    <span>+1 (480) 555-0192</span>
-                </div>
-            </div>
+    <div class="max-w-3xl mx-auto">
+        <!-- Detail image -->
+        <div class="mb-8 md:mb-12 overflow-hidden estimator-image">
+            <img src="/images/estimate-detail-placeholder.jpg" alt="Styled rental interior detail" class="w-full aspect-[21/9] object-cover opacity-80">
+        </div>
 
-            <!-- Booking Section -->
-            <div class="mt-8 pt-8 border-t border-white/10 estimate-booking">
-                <h3 class="text-lg md:text-xl font-serif text-white mb-2">Looking for a full renovation or backyard remodel?</h3>
-                <p class="text-sm text-gray-400 font-light mb-4">Book a meeting with our team instantly to go over pricing.</p>
-                <a href="#" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-brand-gold hover:text-white transition-colors duration-300 group">
-                    <span>Schedule Zoom Call</span>
-                    <iconify-icon icon="solar:calendar-linear" width="16" class="group-hover:translate-x-1 transition-transform duration-300"></iconify-icon>
-                </a>
+        <!-- Header -->
+        <div class="text-center mb-10 md:mb-14 estimator-header">
+            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold mb-3 md:mb-4 block">Project Estimator</span>
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
+                See what your project will cost.
+            </h2>
+            <p class="text-sm md:text-base text-gray-400 font-light max-w-lg mx-auto">
+                Answer a few quick questions and get a custom estimate in under 60 seconds.
+            </p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="mb-8 md:mb-12 estimator-progress">
+            <div class="flex items-center justify-between mb-3">
+                <span id="step-label" class="text-[10px] uppercase tracking-widest text-gray-500">Step 1 of 3</span>
+                <span id="step-percent" class="text-[10px] uppercase tracking-widest text-brand-gold">33%</span>
+            </div>
+            <div class="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full bg-brand-gold rounded-full transition-all duration-700 ease-out" style="width: 33%"></div>
             </div>
         </div>
 
-        <!-- Right Side (Form) -->
-        <form class="estimate-form space-y-8 md:space-y-12 pt-2 md:pt-4">
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                <div class="form-field group relative" style="--field-delay: 0s">
-                    <input type="text" id="name" required placeholder=" " class="block w-full bg-transparent border-b border-white/10 py-2 text-white placeholder-transparent focus:outline-none peer text-sm">
-                    <label for="name" class="absolute left-0 -top-3.5 text-[10px] text-gray-500 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-brand-gold peer-focus:text-[10px]">Full Name</label>
-                    <div class="form-field-line absolute bottom-0 left-0 h-[1px] w-0 bg-brand-gold"></div>
-                </div>
-                
-                <div class="form-field group relative" style="--field-delay: 0.1s">
-                    <input type="email" id="email" required placeholder=" " class="block w-full bg-transparent border-b border-white/10 py-2 text-white placeholder-transparent focus:outline-none peer text-sm">
-                    <label for="email" class="absolute left-0 -top-3.5 text-[10px] text-gray-500 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-brand-gold peer-focus:text-[10px]">Email Address</label>
-                    <div class="form-field-line absolute bottom-0 left-0 h-[1px] w-0 bg-brand-gold"></div>
+        <!-- Step Container -->
+        <div id="estimator-wizard" class="relative overflow-hidden">
+
+            <!-- Step 1: Property Size -->
+            <div id="step-1" class="estimator-step active">
+                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
+                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2">How large is your property?</h3>
+                    <p class="text-sm text-gray-400 font-light mb-8">Enter the total interior square footage. This helps us estimate design and furnishing costs.</p>
+
+                    <div class="space-y-6">
+                        <div class="relative">
+                            <input
+                                type="number"
+                                id="est-sqft"
+                                min="500"
+                                max="15000"
+                                step="100"
+                                placeholder="e.g. 2000"
+                                class="w-full bg-transparent border border-white/15 hover:border-white/25 focus:border-brand-gold px-5 py-4 text-white text-lg md:text-xl font-light focus:outline-none transition-colors duration-300"
+                            >
+                            <span class="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-gray-500">sqft</span>
+                        </div>
+
+                        <!-- Quick-select pills -->
+                        <div class="flex flex-wrap gap-2">
+                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="1000">1,000</button>
+                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="1500">1,500</button>
+                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="2000">2,000</button>
+                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="3000">3,000</button>
+                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="4000">4,000</button>
+                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="5000">5,000+</button>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-end">
+                        <button type="button" id="next-1" class="est-next-btn bg-brand-gold/10 hover:bg-brand-gold text-brand-gold hover:text-black border border-brand-gold/20 hover:border-brand-gold px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 relative overflow-hidden group cursor-pointer">
+                            <span class="relative z-10 flex items-center gap-2">Next <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon></span>
+                            <div class="absolute inset-0 bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-                <div class="form-field group relative" style="--field-delay: 0.2s">
-                    <input type="text" id="property" required placeholder=" " class="block w-full bg-transparent border-b border-white/10 py-2 text-white placeholder-transparent focus:outline-none peer text-sm">
-                    <label for="property" class="absolute left-0 -top-3.5 text-[10px] text-gray-500 uppercase tracking-widest transition-all duration-300 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-2 peer-focus:-top-3.5 peer-focus:text-brand-gold peer-focus:text-[10px]">Property Address / City</label>
-                    <div class="form-field-line absolute bottom-0 left-0 h-[1px] w-0 bg-brand-gold"></div>
-                </div>
+            <!-- Step 2: Backyard -->
+            <div id="step-2" class="estimator-step">
+                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
+                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2">Does your property need backyard design?</h3>
+                    <p class="text-sm text-gray-400 font-light mb-8">If your rental has outdoor space that needs styling, we'll include a backyard design plan.</p>
 
-                <div class="form-field group relative" style="--field-delay: 0.3s">
-                    <select id="budget" class="block w-full bg-transparent border-b border-white/10 py-2 text-white focus:outline-none text-sm appearance-none cursor-pointer">
-                        <option value="" class="bg-brand-panel text-gray-500">Select SQFT Range</option>
-                        <option value="1" class="bg-brand-panel text-white">Under 2,000 sqft</option>
-                        <option value="2" class="bg-brand-panel text-white">2,000 - 3,500 sqft</option>
-                        <option value="3" class="bg-brand-panel text-white">3,500 - 5,000 sqft</option>
-                        <option value="4" class="bg-brand-panel text-white">5,000+ sqft</option>
-                    </select>
-                    <iconify-icon icon="solar:alt-arrow-down-linear" class="absolute right-0 top-2 text-gray-500 pointer-events-none group-hover:text-brand-gold transition-colors duration-300"></iconify-icon>
-                    <label for="budget" class="absolute left-0 -top-3.5 text-[10px] text-gray-500 uppercase tracking-widest">Property Size</label>
-                    <div class="form-field-line absolute bottom-0 left-0 h-[1px] w-0 bg-brand-gold"></div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <button type="button" class="backyard-option group border border-white/15 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer" data-value="yes">
+                            <iconify-icon icon="solar:sun-2-linear" width="32" class="text-gray-500 group-hover:text-brand-gold transition-colors duration-300 mb-3 block mx-auto"></iconify-icon>
+                            <span class="text-lg md:text-xl font-serif text-white block mb-1">Yes</span>
+                            <span class="text-[10px] text-gray-500 uppercase tracking-wider">+ $500 design fee</span>
+                        </button>
+                        <button type="button" class="backyard-option group border border-white/15 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer" data-value="no">
+                            <iconify-icon icon="solar:home-2-linear" width="32" class="text-gray-500 group-hover:text-brand-gold transition-colors duration-300 mb-3 block mx-auto"></iconify-icon>
+                            <span class="text-lg md:text-xl font-serif text-white block mb-1">No</span>
+                            <span class="text-[10px] text-gray-500 uppercase tracking-wider">Interior only</span>
+                        </button>
+                    </div>
+
+                    <div class="mt-8 flex justify-between">
+                        <button type="button" id="back-2" class="est-back-btn text-sm text-gray-500 hover:text-white transition-colors duration-300 flex items-center gap-2 cursor-pointer">
+                            <iconify-icon icon="solar:arrow-left-linear" width="14"></iconify-icon> Back
+                        </button>
+                    </div>
                 </div>
             </div>
 
-            <div class="form-submit pt-2 md:pt-4">
-                <button type="submit" class="submit-btn w-full sm:w-auto bg-brand-gold/10 hover:bg-brand-gold text-brand-gold hover:text-black border border-brand-gold/20 hover:border-brand-gold px-8 md:px-10 py-4 text-[10px] font-bold uppercase tracking-[0.15em] md:tracking-[0.2em] transition-all duration-500 relative overflow-hidden group">
-                    <span class="relative z-10">Get Estimate</span>
-                    <div class="absolute inset-0 bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
-                </button>
+            <!-- Step 3: Contact Info -->
+            <div id="step-3" class="estimator-step">
+                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
+                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2">Where should we send your estimate?</h3>
+                    <p class="text-sm text-gray-400 font-light mb-8">Enter your details below and we'll email your custom project estimate instantly.</p>
+
+                    <div class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div class="relative">
+                                <input type="text" id="est-name" required placeholder="Full Name" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                            </div>
+                            <div class="relative">
+                                <input type="email" id="est-email" required placeholder="Email Address" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                            <div class="relative">
+                                <input type="tel" id="est-phone" placeholder="Phone (optional)" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                            </div>
+                            <div class="relative">
+                                <input type="text" id="est-location" placeholder="Property City / State" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex justify-between items-center">
+                        <button type="button" id="back-3" class="est-back-btn text-sm text-gray-500 hover:text-white transition-colors duration-300 flex items-center gap-2 cursor-pointer">
+                            <iconify-icon icon="solar:arrow-left-linear" width="14"></iconify-icon> Back
+                        </button>
+                        <button type="button" id="submit-estimate" class="est-next-btn bg-brand-gold hover:bg-brand-gold/80 text-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 cursor-pointer flex items-center gap-2">
+                            <span>See My Estimate</span>
+                            <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon>
+                        </button>
+                    </div>
+
+                    <p class="text-[10px] text-gray-600 mt-4 text-center">Your info is kept private. No spam, ever.</p>
+                </div>
             </div>
+
+            <!-- Step Loading: Calculating -->
+            <div id="step-loading" class="estimator-step">
+                <div class="bg-brand-black/50 border border-brand-border p-10 md:p-16">
+                    <div class="flex flex-col items-center justify-center text-center">
+                        <!-- Spinner -->
+                        <div class="loading-spinner mb-6">
+                            <svg width="48" height="48" viewBox="0 0 48 48" class="animate-spin-slow">
+                                <circle cx="24" cy="24" r="20" fill="none" stroke="rgba(138,154,123,0.15)" stroke-width="3"></circle>
+                                <circle cx="24" cy="24" r="20" fill="none" stroke="#8A9A7B" stroke-width="3" stroke-linecap="round" stroke-dasharray="80 45"></circle>
+                            </svg>
+                        </div>
+
+                        <h3 class="text-xl md:text-2xl font-serif text-white mb-2">Calculating your estimate...</h3>
+
+                        <!-- Animated status lines -->
+                        <div class="space-y-3 mt-6 w-full max-w-xs">
+                            <div class="loading-line flex items-center gap-3" style="--line-delay: 0s">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-brand-gold loading-check" width="16"></iconify-icon>
+                                <span class="text-sm text-gray-400 font-light">Analyzing property size</span>
+                            </div>
+                            <div class="loading-line flex items-center gap-3" style="--line-delay: 0.6s">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-brand-gold loading-check" width="16"></iconify-icon>
+                                <span class="text-sm text-gray-400 font-light">Calculating design fees</span>
+                            </div>
+                            <div class="loading-line flex items-center gap-3" style="--line-delay: 1.2s">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-brand-gold loading-check" width="16"></iconify-icon>
+                                <span class="text-sm text-gray-400 font-light">Building furnishing estimate</span>
+                            </div>
+                            <div class="loading-line flex items-center gap-3" style="--line-delay: 1.8s">
+                                <iconify-icon icon="solar:check-circle-bold" class="text-brand-gold loading-check" width="16"></iconify-icon>
+                                <span class="text-sm text-gray-400 font-light">Preparing your quote</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Results -->
+            <div id="step-4" class="estimator-step">
+                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
+                    <div class="text-center mb-8">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand-gold/10 border border-brand-gold/20 mb-4">
+                            <iconify-icon icon="solar:check-circle-linear" class="text-brand-gold" width="28"></iconify-icon>
+                        </div>
+                        <h3 class="text-xl md:text-2xl font-serif text-white mb-1">Your Project Estimate</h3>
+                        <p class="text-sm text-gray-400 font-light">A copy has been sent to <span id="result-email" class="text-brand-gold"></span></p>
+                    </div>
+
+                    <!-- Estimate Breakdown -->
+                    <div class="space-y-0 border border-brand-border divide-y divide-brand-border mb-8">
+                        <div class="flex justify-between items-center p-4 md:p-5">
+                            <div>
+                                <span class="text-sm text-white block">Design Fee</span>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-wider"><span id="result-sqft-1">—</span> sqft &times; $3.50/sqft</span>
+                            </div>
+                            <span id="result-design" class="text-lg md:text-xl font-serif text-white">—</span>
+                        </div>
+                        <div id="result-backyard-row" class="flex justify-between items-center p-4 md:p-5 hidden">
+                            <div>
+                                <span class="text-sm text-white block">Backyard Design Fee</span>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-wider">Outdoor space design plan</span>
+                            </div>
+                            <span class="text-lg md:text-xl font-serif text-white">$500</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 md:p-5">
+                            <div>
+                                <span class="text-sm text-white block">Furniture, Install & Essentials</span>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-wider"><span id="result-sqft-2">—</span> sqft &times; $20–25/sqft</span>
+                            </div>
+                            <span id="result-furnish" class="text-lg md:text-xl font-serif text-white">—</span>
+                        </div>
+                        <div class="flex justify-between items-center p-4 md:p-5 bg-brand-gold/5">
+                            <div>
+                                <span class="text-sm font-bold text-white block">Estimated Total</span>
+                                <span class="text-[10px] text-gray-500 uppercase tracking-wider">Based on your property details</span>
+                            </div>
+                            <span id="result-total" class="text-xl md:text-2xl font-serif text-brand-gold font-medium">—</span>
+                        </div>
+                    </div>
+
+                    <p class="text-[10px] text-gray-500 text-center mb-6">This is an estimate. Final pricing may vary based on design selections and property specifics.</p>
+
+                    <!-- CTA -->
+                    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 bg-brand-gold hover:bg-brand-gold/80 text-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500">
+                            <iconify-icon icon="solar:calendar-linear" width="16"></iconify-icon>
+                            Schedule a Call to Discuss
+                        </a>
+                    </div>
+
+                    <div class="flex justify-center gap-6 mt-8 pt-6 border-t border-brand-border">
+                        <div class="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors duration-300 cursor-pointer group">
+                            <iconify-icon icon="solar:letter-linear" width="16" class="group-hover:text-brand-gold transition-colors duration-300"></iconify-icon>
+                            <span>hello@solstizio.com</span>
+                        </div>
+                        <div class="flex items-center gap-2 text-sm text-gray-500 hover:text-gray-300 transition-colors duration-300 cursor-pointer group">
+                            <iconify-icon icon="solar:phone-calling-linear" width="16" class="group-hover:text-brand-gold transition-colors duration-300"></iconify-icon>
+                            <span>+1 (480) 555-0192</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Hidden fields for calculated values (accessible to external tools / GTM) -->
+        <form id="estimate-hidden-form" style="display:none;">
+            <input type="hidden" name="name" id="hf-name">
+            <input type="hidden" name="email" id="hf-email">
+            <input type="hidden" name="phone" id="hf-phone">
+            <input type="hidden" name="location" id="hf-location">
+            <input type="hidden" name="sqft" id="hf-sqft">
+            <input type="hidden" name="backyard" id="hf-backyard">
+            <input type="hidden" name="design_fee" id="hf-design-fee">
+            <input type="hidden" name="backyard_fee" id="hf-backyard-fee">
+            <input type="hidden" name="furnish_low" id="hf-furnish-low">
+            <input type="hidden" name="furnish_high" id="hf-furnish-high">
+            <input type="hidden" name="total_low" id="hf-total-low">
+            <input type="hidden" name="total_high" id="hf-total-high">
         </form>
+
     </div>
 </section>
 
 <style>
-    /* Title animation */
-    .estimate-title-line {
-        display: inline-block;
-        transform: translateY(100%);
-    }
-    
-    .estimate-section.in-view .estimate-title-line {
-        animation: titleUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    .estimate-section.in-view .estimate-title span:nth-child(2) .estimate-title-line {
-        animation-delay: 0.1s;
-    }
-    
-    @keyframes titleUp {
-        to { transform: translateY(0); }
-    }
-    
-    /* Description animation */
-    .estimate-desc {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    
-    .estimate-section.in-view .estimate-desc {
-        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
-    }
-    
-    /* Contact animation */
-    .estimate-contact {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    
-    .estimate-section.in-view .estimate-contact {
-        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
-    }
-
-    /* Booking animation */
-    .estimate-booking {
+    /* Header animation */
+    .estimator-header {
         opacity: 0;
         transform: translateY(20px);
     }
 
-    .estimate-section.in-view .estimate-booking {
-        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+    .estimate-section.in-view .estimator-header {
+        animation: estFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    
-    @keyframes fadeUp {
+
+    .estimator-progress {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    .estimate-section.in-view .estimator-progress {
+        animation: estFadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+    }
+
+    @keyframes estFadeUp {
         to {
             opacity: 1;
             transform: translateY(0);
         }
     }
-    
-    /* Form field animations */
-    .form-field {
+
+    /* Step transitions */
+    .estimator-step {
+        display: none;
         opacity: 0;
-        transform: translateY(30px);
+        transform: translateX(40px);
     }
-    
-    .estimate-section.in-view .form-field {
-        animation: fieldReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: calc(0.4s + var(--field-delay));
+
+    .estimator-step.active {
+        display: block;
+        animation: stepIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
-    
-    @keyframes fieldReveal {
+
+    .estimator-step.exiting {
+        display: block;
+        animation: stepOut 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .estimator-step.entering-back {
+        display: block;
+        animation: stepInBack 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .estimator-step.exiting-back {
+        display: block;
+        animation: stepOutBack 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes stepIn {
+        from { opacity: 0; transform: translateX(40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes stepOut {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(-40px); }
+    }
+    @keyframes stepInBack {
+        from { opacity: 0; transform: translateX(-40px); }
+        to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes stepOutBack {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(40px); }
+    }
+
+    /* Backyard option selected state */
+    .backyard-option.selected {
+        border-color: #8A9A7B;
+        background: rgba(138, 154, 123, 0.08);
+    }
+
+    .backyard-option.selected iconify-icon {
+        color: #8A9A7B;
+    }
+
+    /* Sqft pill selected state */
+    .sqft-pill.selected {
+        border-color: #8A9A7B;
+        color: #8A9A7B;
+        background: rgba(138, 154, 123, 0.08);
+    }
+
+    /* Loading spinner */
+    @keyframes spinSlow {
+        to { transform: rotate(360deg); }
+    }
+    .animate-spin-slow {
+        animation: spinSlow 1.5s linear infinite;
+    }
+
+    /* Loading check lines - staggered reveal */
+    .loading-line {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    .estimator-step.active .loading-line {
+        animation: loadLineIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: var(--line-delay);
+    }
+
+    .loading-check {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    .estimator-step.active .loading-check {
+        animation: checkPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        animation-delay: calc(var(--line-delay) + 0.15s);
+    }
+
+    @keyframes loadLineIn {
         to {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateX(0);
         }
     }
-    
-    /* Focus line animation */
-    .form-field input:focus ~ .form-field-line,
-    .form-field select:focus ~ .form-field-line {
-        animation: lineExpand 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-    }
-    
-    @keyframes lineExpand {
-        to { width: 100%; }
-    }
-    
-    /* Submit button animation */
-    .form-submit {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    
-    .estimate-section.in-view .form-submit {
-        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
-    }
-    
-    /* Button text stays white on hover */
-    .submit-btn:hover span {
-        color: black;
+
+    @keyframes checkPop {
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
     }
 </style>
 
 <script is:inline>
-    document.addEventListener('DOMContentLoaded', function() {
-        const section = document.querySelector('.estimate-section');
-        
-        if (section) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    }
-                });
-            }, { threshold: 0.2 });
-            
-            observer.observe(section);
+document.addEventListener('DOMContentLoaded', function() {
+    const section = document.querySelector('.estimate-section');
+    if (section) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('in-view');
+            });
+        }, { threshold: 0.1 });
+        observer.observe(section);
+    }
+
+    let currentStep = 1;
+    let data = { sqft: 0, backyard: false, name: '', email: '', phone: '', location: '' };
+
+    const steps = {
+        1: document.getElementById('step-1'),
+        2: document.getElementById('step-2'),
+        3: document.getElementById('step-3'),
+        'loading': document.getElementById('step-loading'),
+        4: document.getElementById('step-4')
+    };
+
+    function goToStep(num, direction) {
+        const current = steps[currentStep];
+        const next = steps[num];
+        if (!current || !next) return;
+
+        const isForward = direction === 'forward';
+        current.classList.remove('active');
+        current.classList.add(isForward ? 'exiting' : 'exiting-back');
+
+        setTimeout(() => {
+            current.classList.remove('exiting', 'exiting-back');
+            current.style.display = 'none';
+            next.style.display = 'block';
+            next.classList.add(isForward ? 'active' : 'entering-back');
+
+            setTimeout(() => {
+                next.classList.remove('entering-back');
+                next.classList.add('active');
+            }, 500);
+
+            currentStep = num;
+            updateProgress();
+        }, 300);
+    }
+
+    function updateProgress() {
+        const totalSteps = 3;
+        const isDone = currentStep === 'loading' || currentStep >= 4;
+        const displayStep = isDone ? totalSteps : Math.min(currentStep, totalSteps);
+        const pct = isDone ? 100 : Math.round((displayStep / totalSteps) * 100);
+        document.getElementById('step-label').textContent = isDone
+            ? 'Complete'
+            : 'Step ' + displayStep + ' of ' + totalSteps;
+        document.getElementById('step-percent').textContent = pct + '%';
+        document.getElementById('progress-bar').style.width = pct + '%';
+    }
+
+    function formatCurrency(n) {
+        return '$' + n.toLocaleString('en-US');
+    }
+
+    function showResults() {
+        var sqft = data.sqft;
+        var designFee = sqft * 3.5;
+        var backyardFee = data.backyard ? 500 : 0;
+        var furnishLow = sqft * 20;
+        var furnishHigh = sqft * 25;
+        var totalLow = designFee + backyardFee + furnishLow;
+        var totalHigh = designFee + backyardFee + furnishHigh;
+
+        document.getElementById('result-email').textContent = data.email;
+        document.getElementById('result-sqft-1').textContent = sqft.toLocaleString();
+        document.getElementById('result-sqft-2').textContent = sqft.toLocaleString();
+        document.getElementById('result-design').textContent = formatCurrency(designFee + backyardFee);
+
+        var backyardRow = document.getElementById('result-backyard-row');
+        if (data.backyard) {
+            backyardRow.classList.remove('hidden');
+            document.getElementById('result-design').textContent = formatCurrency(designFee);
+        } else {
+            backyardRow.classList.add('hidden');
         }
+
+        document.getElementById('result-furnish').textContent = formatCurrency(furnishLow) + ' – ' + formatCurrency(furnishHigh);
+        document.getElementById('result-total').textContent = formatCurrency(totalLow) + ' – ' + formatCurrency(totalHigh);
+    }
+
+    // Step 1: sqft pills
+    document.querySelectorAll('.sqft-pill').forEach(function(pill) {
+        pill.addEventListener('click', function() {
+            document.querySelectorAll('.sqft-pill').forEach(function(p) { p.classList.remove('selected'); });
+            this.classList.add('selected');
+            document.getElementById('est-sqft').value = this.dataset.value;
+        });
     });
+
+    document.getElementById('est-sqft').addEventListener('input', function() {
+        document.querySelectorAll('.sqft-pill').forEach(function(p) { p.classList.remove('selected'); });
+    });
+
+    // Step 1 next
+    document.getElementById('next-1').addEventListener('click', function() {
+        var sqft = parseInt(document.getElementById('est-sqft').value);
+        if (!sqft || sqft < 100) {
+            document.getElementById('est-sqft').focus();
+            document.getElementById('est-sqft').style.borderColor = '#ef4444';
+            setTimeout(function() { document.getElementById('est-sqft').style.borderColor = ''; }, 2000);
+            return;
+        }
+        data.sqft = sqft;
+        goToStep(2, 'forward');
+    });
+
+    // Step 2: backyard options
+    document.querySelectorAll('.backyard-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.backyard-option').forEach(function(b) { b.classList.remove('selected'); });
+            this.classList.add('selected');
+            data.backyard = this.dataset.value === 'yes';
+            setTimeout(function() { goToStep(3, 'forward'); }, 400);
+        });
+    });
+
+    // Back buttons
+    document.getElementById('back-2').addEventListener('click', function() { goToStep(1, 'back'); });
+    document.getElementById('back-3').addEventListener('click', function() { goToStep(2, 'back'); });
+
+    // ── Webhook URL ──
+    // Replace this with your CRM webhook endpoint
+    var WEBHOOK_URL = '';
+
+    function buildPayload() {
+        var sqft = data.sqft;
+        var designFee = sqft * 3.5;
+        var backyardFee = data.backyard ? 500 : 0;
+        var furnishLow = sqft * 20;
+        var furnishHigh = sqft * 25;
+        var totalLow = designFee + backyardFee + furnishLow;
+        var totalHigh = designFee + backyardFee + furnishHigh;
+
+        return {
+            name: data.name,
+            email: data.email,
+            phone: data.phone,
+            location: data.location,
+            sqft: sqft,
+            backyard: data.backyard,
+            design_fee: designFee,
+            backyard_fee: backyardFee,
+            furnish_low: furnishLow,
+            furnish_high: furnishHigh,
+            total_low: totalLow,
+            total_high: totalHigh,
+            submitted_at: new Date().toISOString()
+        };
+    }
+
+    function populateHiddenFields(payload) {
+        document.getElementById('hf-name').value = payload.name;
+        document.getElementById('hf-email').value = payload.email;
+        document.getElementById('hf-phone').value = payload.phone;
+        document.getElementById('hf-location').value = payload.location;
+        document.getElementById('hf-sqft').value = payload.sqft;
+        document.getElementById('hf-backyard').value = payload.backyard ? 'yes' : 'no';
+        document.getElementById('hf-design-fee').value = payload.design_fee;
+        document.getElementById('hf-backyard-fee').value = payload.backyard_fee;
+        document.getElementById('hf-furnish-low').value = payload.furnish_low;
+        document.getElementById('hf-furnish-high').value = payload.furnish_high;
+        document.getElementById('hf-total-low').value = payload.total_low;
+        document.getElementById('hf-total-high').value = payload.total_high;
+    }
+
+    function fireWebhook(payload) {
+        if (!WEBHOOK_URL) return Promise.resolve();
+        return fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        }).catch(function(err) {
+            console.warn('Webhook failed:', err);
+        });
+    }
+
+    // Step 3: submit
+    document.getElementById('submit-estimate').addEventListener('click', function() {
+        var name = document.getElementById('est-name').value.trim();
+        var email = document.getElementById('est-email').value.trim();
+        if (!name || !email || !email.includes('@')) {
+            if (!name) {
+                document.getElementById('est-name').style.borderColor = '#ef4444';
+                document.getElementById('est-name').focus();
+            }
+            if (!email || !email.includes('@')) {
+                document.getElementById('est-email').style.borderColor = '#ef4444';
+                if (name) document.getElementById('est-email').focus();
+            }
+            setTimeout(function() {
+                document.getElementById('est-name').style.borderColor = '';
+                document.getElementById('est-email').style.borderColor = '';
+            }, 2000);
+            return;
+        }
+        data.name = name;
+        data.email = email;
+        data.phone = document.getElementById('est-phone').value.trim();
+        data.location = document.getElementById('est-location').value.trim();
+
+        var payload = buildPayload();
+        populateHiddenFields(payload);
+
+        var btn = document.getElementById('submit-estimate');
+        btn.disabled = true;
+        btn.querySelector('span').textContent = 'Sending...';
+
+        // Show loading screen, fire webhook in parallel
+        showResults();
+        goToStep('loading', 'forward');
+
+        var LOADING_MIN_MS = 2800;
+        var loadStart = Date.now();
+
+        fireWebhook(payload).then(function() {
+            var elapsed = Date.now() - loadStart;
+            var remaining = Math.max(0, LOADING_MIN_MS - elapsed);
+            setTimeout(function() {
+                goToStep(4, 'forward');
+                btn.disabled = false;
+                btn.querySelector('span').textContent = 'See My Estimate';
+            }, remaining);
+        });
+    });
+
+    // Allow enter key to advance
+    document.getElementById('est-sqft').addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') { e.preventDefault(); document.getElementById('next-1').click(); }
+    });
+    ['est-name', 'est-email', 'est-phone', 'est-location'].forEach(function(id) {
+        document.getElementById(id).addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') { e.preventDefault(); document.getElementById('submit-estimate').click(); }
+        });
+    });
+});
 </script>

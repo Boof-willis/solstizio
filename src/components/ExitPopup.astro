@@ -21,47 +21,25 @@
             <!-- Content -->
             <div class="exit-popup-header">
                 <span class="exit-popup-label">Wait — Before You Go</span>
-                <h3 class="exit-popup-title">Get Your Free ROI Estimate</h3>
+                <h3 class="exit-popup-title">See What Your Project Will Cost</h3>
                 <p class="exit-popup-desc">
-                    Discover how much more your property could earn with professional design. Takes 30 seconds.
+                    Get a free project estimate in under 60 seconds. Just answer a few quick questions.
                 </p>
             </div>
             
-            <!-- Form -->
-            <form id="exit-popup-form" class="exit-popup-form">
-                <div class="exit-popup-field">
-                    <input 
-                        type="email" 
-                        id="exit-email" 
-                        required 
-                        placeholder="your@email.com"
-                        class="exit-popup-input"
-                    >
-                    <label for="exit-email" class="exit-popup-input-label">Email Address</label>
-                </div>
-                
-                <div class="exit-popup-field">
-                    <input 
-                        type="text" 
-                        id="exit-property" 
-                        placeholder="City, State"
-                        class="exit-popup-input"
-                    >
-                    <label for="exit-property" class="exit-popup-input-label">Property Location (Optional)</label>
-                </div>
-                
-                <button type="submit" class="exit-popup-submit">
-                    Send My Free Estimate
-                </button>
-                
+            <!-- CTA to estimator -->
+            <div class="exit-popup-form" style="gap: 1rem;">
+                <a href="#estimate" id="exit-popup-cta" class="exit-popup-submit" style="display: block; text-align: center; text-decoration: none;">
+                    Get My Free Estimate
+                </a>
                 <p class="exit-popup-disclaimer">
-                    No spam. Unsubscribe anytime.
+                    No commitment. Takes 60 seconds.
                 </p>
-            </form>
+            </div>
             
             <!-- Skip Link -->
             <button id="exit-popup-skip" class="exit-popup-skip">
-                No thanks, I'll pass on the free estimate
+                No thanks, I'm not ready yet
             </button>
         </div>
     </div>
@@ -347,6 +325,9 @@
         backdrop?.addEventListener('click', hidePopup);
         skipBtn?.addEventListener('click', hidePopup);
         
+        var exitCta = document.getElementById('exit-popup-cta');
+        if (exitCta) exitCta.addEventListener('click', hidePopup);
+        
         // Escape key
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && !popup.classList.contains('exit-popup-hidden')) {
@@ -354,28 +335,6 @@
             }
         });
         
-        // Form submit
-        form?.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formContainer = form.parentElement;
-            formContainer.querySelector('.exit-popup-form').outerHTML = `
-                <div class="exit-popup-success">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                    <h4>Thank You!</h4>
-                    <p>We'll send your estimate within 24 hours.</p>
-                </div>
-            `;
-            
-            // Hide skip button
-            const skip = formContainer.querySelector('.exit-popup-skip');
-            if (skip) skip.style.display = 'none';
-            
-            setTimeout(hidePopup, 3000);
-        });
         
         // Debug: Allow manual trigger via console or Shift+E
         window.showExitPopup = function() {

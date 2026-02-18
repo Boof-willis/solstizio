@@ -1,28 +1,71 @@
 ---
 // Reviews section component
+const reviews = [
+    {
+        text: "They made designing our short-term rental SO easy. We were set up and booking in no time. Couldn't be happier.",
+        name: "Mike & Jenna T.",
+        detail: "Scottsdale, AZ",
+        headshot: "/images/headshot-mike-jenna-placeholder.jpg"
+    },
+    {
+        text: "As first-time investors, we had no idea where to start. Solstizio walked us through everything and the final result blew us away.",
+        name: "Sarah M.",
+        detail: "First-Time STR Investor",
+        headshot: "/images/headshot-sarah-placeholder.jpg"
+    },
+    {
+        text: "The design, communication, and attention to detail were incredible. Our listing photos turned out amazing and we started getting bookings right away.",
+        name: "David R.",
+        detail: "Out-of-State Investor",
+        headshot: "/images/headshot-david-placeholder.jpg"
+    }
+];
 ---
 
 <section id="reviews" class="py-16 md:py-32 px-4 md:px-6 bg-brand-black relative overflow-hidden reviews-section">
     <!-- Decorative abstract shape with pulse -->
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] pointer-events-none z-0">
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] md:w-[600px] h-[400px] md:h-[600px] pointer-events-none z-0">
         <div class="reviews-glow w-full h-full bg-brand-gold/5 rounded-full blur-[80px] md:blur-[100px]"></div>
     </div>
 
-    <div class="max-w-4xl mx-auto text-center relative z-10">
-        <!-- Star icon -->
-        <div class="review-icon flex justify-center mb-6 md:mb-8">
-            <iconify-icon icon="solar:star-fall-minimalistic-2-linear" class="text-brand-gold" width="28"></iconify-icon>
+    <div class="max-w-5xl mx-auto relative z-10">
+        <!-- Section header -->
+        <div class="text-center mb-10 md:mb-16">
+            <div class="review-icon flex justify-center mb-6 md:mb-8">
+                <iconify-icon icon="solar:star-fall-minimalistic-2-linear" class="text-brand-gold" width="28"></iconify-icon>
+            </div>
+
+            <!-- Hero quote -->
+            <h3 class="review-quote text-2xl sm:text-3xl md:text-5xl font-serif italic text-white leading-tight mb-6 md:mb-8 px-2 max-w-4xl mx-auto">
+                <span class="review-word">Solstizio</span> <span class="review-word">completely</span> <span class="review-word">transformed</span> <span class="review-word">our</span> <span class="review-word">rental.</span> <span class="review-word">As</span> <span class="review-word review-highlight">first-time</span> <span class="review-word">investors,</span> <span class="review-word">we</span> <span class="review-word">had</span> <span class="review-word">no</span> <span class="review-word">idea</span> <span class="review-word">where</span> <span class="review-word">to</span> <span class="review-word">start</span> <span class="review-word">—</span> <span class="review-word">they</span> <span class="review-word">made</span> <span class="review-word">the</span> <span class="review-word">whole</span> <span class="review-word">process</span> <span class="review-word review-highlight">effortless.</span>
+            </h3>
+
+            <div class="review-attribution flex flex-col items-center gap-1 md:gap-2">
+                <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-cream">Sarah M.</span>
+                <span class="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-muted">First-Time STR Investor — Scottsdale, AZ</span>
+            </div>
         </div>
-        
-        <!-- Quote text with word-by-word reveal -->
-        <h3 class="review-quote text-2xl sm:text-3xl md:text-5xl font-serif italic text-white leading-tight mb-6 md:mb-8 px-2">
-            <span class="review-word">Solstizio</span> <span class="review-word">didn't</span> <span class="review-word">just</span> <span class="review-word">furnish</span> <span class="review-word">our</span> <span class="review-word">property;</span> <span class="review-word">they</span> <span class="review-word">created</span> <span class="review-word">a</span> <span class="review-word">brand.</span> <span class="review-word">We</span> <span class="review-word">secured</span> <span class="review-word review-highlight">$125k</span> <span class="review-word">in</span> <span class="review-word">bookings</span> <span class="review-word">in</span> <span class="review-word">our</span> <span class="review-word">first</span> <span class="review-word review-highlight">90 days.</span>
-        </h3>
-        
-        <!-- Attribution -->
-        <div class="review-attribution flex flex-col items-center gap-1 md:gap-2">
-            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-cream">Jameson & Co. Capital</span>
-            <span class="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-muted">Paradise Valley, AZ</span>
+
+        <!-- Review cards grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-12 md:mt-16 pt-10 md:pt-12 border-t border-brand-border">
+            {reviews.map((review, index) => (
+                <div class="review-card group p-5 md:p-6 border border-brand-border bg-brand-panel/50 hover:bg-brand-panel transition-all duration-500 relative" style={`--review-delay: ${index * 0.12}s`}>
+                    <div class="flex gap-1 mb-3 md:mb-4">
+                        {[...Array(5)].map(() => (
+                            <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="14"></iconify-icon>
+                        ))}
+                    </div>
+                    <p class="text-sm text-gray-300 font-light leading-relaxed mb-4 md:mb-5">"{review.text}"</p>
+                    <div class="mt-auto flex items-center gap-3">
+                        <img src={review.headshot} alt={review.name} class="w-9 h-9 rounded-full object-cover bg-brand-border shrink-0">
+                        <div>
+                            <span class="text-xs font-bold uppercase tracking-widest text-brand-cream block">{review.name}</span>
+                            <span class="text-[9px] uppercase tracking-widest text-brand-muted">{review.detail}</span>
+                        </div>
+                    </div>
+                    <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-gold/30 group-hover:w-full transition-all duration-700"></div>
+                </div>
+            ))}
         </div>
     </div>
 </section>
@@ -98,8 +141,9 @@
     .reviews-section.in-view .review-word:nth-child(18) { transition-delay: 1.15s; }
     .reviews-section.in-view .review-word:nth-child(19) { transition-delay: 1.2s; }
     .reviews-section.in-view .review-word:nth-child(20) { transition-delay: 1.25s; }
+    .reviews-section.in-view .review-word:nth-child(21) { transition-delay: 1.3s; }
+    .reviews-section.in-view .review-word:nth-child(22) { transition-delay: 1.35s; }
     
-    /* Highlight important numbers */
     .review-highlight {
         color: #8A9A7B;
     }
@@ -112,6 +156,17 @@
     
     .reviews-section.in-view .review-attribution {
         animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.5s forwards;
+    }
+    
+    /* Review cards animation */
+    .review-card {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    .reviews-section.in-view .review-card {
+        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: calc(1.6s + var(--review-delay));
     }
     
     @keyframes fadeUp {
@@ -133,7 +188,7 @@
                         entry.target.classList.add('in-view');
                     }
                 });
-            }, { threshold: 0.3 });
+            }, { threshold: 0.15 });
             
             observer.observe(section);
         }
