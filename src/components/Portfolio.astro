@@ -41,7 +41,7 @@ const projects = [
 <section id="portfolio" class="bg-brand-black py-16 md:pb-32 px-4 md:px-12 portfolio-section">
     <div class="max-w-[1400px] mx-auto">
         <div class="portfolio-header flex items-end justify-between mb-8 md:mb-16 border-b border-brand-border pb-4 md:pb-6 relative">
-            <h3 class="text-lg md:text-xl font-serif italic text-white">Selected Works</h3>
+            <h3 class="text-lg md:text-xl font-serif italic text-white tracking-tight">Selected Works</h3>
             <!-- Animated border -->
             <div class="portfolio-header-line absolute bottom-0 left-0 h-[1px] w-full bg-brand-border"></div>
         </div>
@@ -55,7 +55,7 @@ const projects = [
                         <img src={project.image} class="w-full h-full object-cover img-zoom" alt={project.title}>
                     </div>
                     <div class="mt-2">
-                        <h4 class="text-sm font-serif text-brand-cream group-hover:text-brand-gold transition-colors duration-300 truncate">{project.title}</h4>
+                        <h4 class="text-sm font-serif text-brand-cream group-hover:text-brand-gold transition-colors duration-300 truncate tracking-tight">{project.title}</h4>
                         <span class="text-[9px] text-brand-muted uppercase tracking-wider">{project.location}</span>
                     </div>
                 </div>
@@ -91,8 +91,9 @@ const projects = [
                     
                     <!-- Title section -->
                     <div class="flex justify-between items-baseline mt-4">
-                        <h4 class="portfolio-title text-2xl font-serif text-brand-cream group-hover:text-brand-gold transition-colors duration-300">
+                        <h4 class="portfolio-title text-2xl md:text-3xl font-serif text-brand-cream group-hover:text-brand-gold transition-colors duration-300 flex items-center gap-2 tracking-tight">
                             {project.title}
+                            <iconify-icon icon="solar:arrow-right-up-linear" width="20" class="opacity-0 group-hover:opacity-100 transition-opacity duration-300"></iconify-icon>
                         </h4>
                         <span class="text-xs text-brand-muted uppercase tracking-widest group-hover:text-gray-400 transition-colors duration-300">{project.type}</span>
                     </div>

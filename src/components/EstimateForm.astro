@@ -2,17 +2,18 @@
 // Project Estimator — multi-step wizard component
 ---
 
-<section id="estimate" class="py-16 md:py-24 px-4 md:px-12 bg-brand-panel border-t border-brand-border estimate-section">
-    <div class="max-w-3xl mx-auto">
-        <!-- Detail image -->
-        <div class="mb-8 md:mb-12 overflow-hidden estimator-image">
-            <img src="/images/estimate-detail-placeholder.jpg" alt="Styled rental interior detail" class="w-full aspect-[21/9] object-cover opacity-80">
-        </div>
+<section id="estimate" class="relative overflow-hidden min-h-[800px] flex items-center py-24 md:py-32 px-4 md:px-12 estimate-section">
+    <!-- Background Image -->
+    <img src="/images/estimate-detail-placeholder.jpg" alt="Styled rental interior detail" class="absolute inset-0 w-full h-full object-cover">
+    
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black/80"></div>
 
+    <div class="relative z-10 w-full max-w-3xl mx-auto">
         <!-- Header -->
         <div class="text-center mb-10 md:mb-14 estimator-header">
             <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold mb-3 md:mb-4 block">Project Estimator</span>
-            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl font-serif text-white mb-4 tracking-tighter">
                 See what your project will cost.
             </h2>
             <p class="text-sm md:text-base text-gray-400 font-light max-w-lg mx-auto">
@@ -36,8 +37,8 @@
 
             <!-- Step 1: Property Size -->
             <div id="step-1" class="estimator-step active">
-                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
-                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2">How large is your property?</h3>
+                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
+                        <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">How large is your property?</h3>
                     <p class="text-sm text-gray-400 font-light mb-8">Enter the total interior square footage. This helps us estimate design and furnishing costs.</p>
 
                     <div class="space-y-6">
@@ -49,7 +50,7 @@
                                 max="15000"
                                 step="100"
                                 placeholder="e.g. 2000"
-                                class="w-full bg-transparent border border-white/15 hover:border-white/25 focus:border-brand-gold px-5 py-4 text-white text-lg md:text-xl font-light focus:outline-none transition-colors duration-300"
+                                class="w-full bg-transparent border border-white/15 hover:border-white/25 focus:border-white px-5 py-4 text-white text-lg md:text-xl font-light focus:outline-none transition-colors duration-300"
                             >
                             <span class="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-gray-500">sqft</span>
                         </div>
@@ -66,7 +67,7 @@
                     </div>
 
                     <div class="mt-8 flex justify-end">
-                        <button type="button" id="next-1" class="est-next-btn bg-brand-gold/10 hover:bg-brand-gold text-brand-gold hover:text-black border border-brand-gold/20 hover:border-brand-gold px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 relative overflow-hidden group cursor-pointer">
+                        <button type="button" id="next-1" class="est-next-btn bg-brand-gold/10 hover:bg-brand-gold text-brand-gold hover:text-black border border-brand-gold/20 hover:border-brand-gold px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(138,154,123,0.3)] relative overflow-hidden group cursor-pointer">
                             <span class="relative z-10 flex items-center gap-2">Next <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon></span>
                             <div class="absolute inset-0 bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
                         </button>
@@ -76,19 +77,19 @@
 
             <!-- Step 2: Backyard -->
             <div id="step-2" class="estimator-step">
-                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
-                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2">Does your property need backyard design?</h3>
+                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
+                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">Does your property need backyard design?</h3>
                     <p class="text-sm text-gray-400 font-light mb-8">If your rental has outdoor space that needs styling, we'll include a backyard design plan.</p>
 
                     <div class="grid grid-cols-2 gap-4">
                         <button type="button" class="backyard-option group border border-white/15 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer" data-value="yes">
                             <iconify-icon icon="solar:sun-2-linear" width="32" class="text-gray-500 group-hover:text-brand-gold transition-colors duration-300 mb-3 block mx-auto"></iconify-icon>
-                            <span class="text-lg md:text-xl font-serif text-white block mb-1">Yes</span>
+                            <span class="text-lg md:text-xl font-serif text-white block mb-1 tracking-tight">Yes</span>
                             <span class="text-[10px] text-gray-500 uppercase tracking-wider">+ $500 design fee</span>
                         </button>
                         <button type="button" class="backyard-option group border border-white/15 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer" data-value="no">
                             <iconify-icon icon="solar:home-2-linear" width="32" class="text-gray-500 group-hover:text-brand-gold transition-colors duration-300 mb-3 block mx-auto"></iconify-icon>
-                            <span class="text-lg md:text-xl font-serif text-white block mb-1">No</span>
+                            <span class="text-lg md:text-xl font-serif text-white block mb-1 tracking-tight">No</span>
                             <span class="text-[10px] text-gray-500 uppercase tracking-wider">Interior only</span>
                         </button>
                     </div>
@@ -103,8 +104,8 @@
 
             <!-- Step 3: Contact Info -->
             <div id="step-3" class="estimator-step">
-                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
-                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2">Where should we send your estimate?</h3>
+                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
+                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">Where should we send your estimate?</h3>
                     <p class="text-sm text-gray-400 font-light mb-8">Enter your details below and we'll email your custom project estimate instantly.</p>
 
                     <div class="space-y-5">
@@ -142,7 +143,7 @@
 
             <!-- Step Loading: Calculating -->
             <div id="step-loading" class="estimator-step">
-                <div class="bg-brand-black/50 border border-brand-border p-10 md:p-16">
+                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-10 md:p-16">
                     <div class="flex flex-col items-center justify-center text-center">
                         <!-- Spinner -->
                         <div class="loading-spinner mb-6">
@@ -152,7 +153,7 @@
                             </svg>
                         </div>
 
-                        <h3 class="text-xl md:text-2xl font-serif text-white mb-2">Calculating your estimate...</h3>
+                        <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">Calculating your estimate...</h3>
 
                         <!-- Animated status lines -->
                         <div class="space-y-3 mt-6 w-full max-w-xs">
@@ -179,12 +180,12 @@
 
             <!-- Step 4: Results -->
             <div id="step-4" class="estimator-step">
-                <div class="bg-brand-black/50 border border-brand-border p-6 md:p-10">
+                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
                     <div class="text-center mb-8">
                         <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand-gold/10 border border-brand-gold/20 mb-4">
                             <iconify-icon icon="solar:check-circle-linear" class="text-brand-gold" width="28"></iconify-icon>
                         </div>
-                        <h3 class="text-xl md:text-2xl font-serif text-white mb-1">Your Project Estimate</h3>
+                        <h3 class="text-xl md:text-2xl font-serif text-white mb-1 tracking-tight">Your Project Estimate</h3>
                         <p class="text-sm text-gray-400 font-light">A copy has been sent to <span id="result-email" class="text-brand-gold"></span></p>
                     </div>
 
@@ -195,28 +196,28 @@
                                 <span class="text-sm text-white block">Design Fee</span>
                                 <span class="text-[10px] text-gray-500 uppercase tracking-wider"><span id="result-sqft-1">—</span> sqft &times; $3.50/sqft</span>
                             </div>
-                            <span id="result-design" class="text-lg md:text-xl font-serif text-white">—</span>
+                            <span id="result-design" class="text-lg md:text-xl font-serif text-white tracking-tight">—</span>
                         </div>
                         <div id="result-backyard-row" class="flex justify-between items-center p-4 md:p-5 hidden">
                             <div>
                                 <span class="text-sm text-white block">Backyard Design Fee</span>
                                 <span class="text-[10px] text-gray-500 uppercase tracking-wider">Outdoor space design plan</span>
                             </div>
-                            <span class="text-lg md:text-xl font-serif text-white">$500</span>
+                            <span class="text-lg md:text-xl font-serif text-white tracking-tight">$500</span>
                         </div>
                         <div class="flex justify-between items-center p-4 md:p-5">
                             <div>
                                 <span class="text-sm text-white block">Furniture, Install & Essentials</span>
                                 <span class="text-[10px] text-gray-500 uppercase tracking-wider"><span id="result-sqft-2">—</span> sqft &times; $20–25/sqft</span>
                             </div>
-                            <span id="result-furnish" class="text-lg md:text-xl font-serif text-white">—</span>
+                            <span id="result-furnish" class="text-lg md:text-xl font-serif text-white tracking-tight">—</span>
                         </div>
                         <div class="flex justify-between items-center p-4 md:p-5 bg-brand-gold/5">
                             <div>
                                 <span class="text-sm font-bold text-white block">Estimated Total</span>
                                 <span class="text-[10px] text-gray-500 uppercase tracking-wider">Based on your property details</span>
                             </div>
-                            <span id="result-total" class="text-xl md:text-2xl font-serif text-brand-gold font-medium">—</span>
+                            <span id="result-total" class="text-xl md:text-2xl font-serif text-brand-gold font-medium tracking-tight">—</span>
                         </div>
                     </div>
 
