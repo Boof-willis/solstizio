@@ -246,7 +246,10 @@ const getTextSize = (index: number) => {
                         entry.target.classList.add('in-view');
                     }
                 });
-            }, { threshold: 0.15 });
+            }, { 
+                threshold: 0,
+                rootMargin: "0px 0px -25% 0px" 
+            });
             
             observer.observe(section);
         }

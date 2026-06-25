@@ -105,7 +105,10 @@
                         entry.target.classList.add('in-view');
                     }
                 });
-            }, { threshold: 0.3 });
+            }, { 
+                threshold: 0,
+                rootMargin: "0px 0px -25% 0px"
+            });
             
             observer.observe(section);
         }

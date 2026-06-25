@@ -56,6 +56,14 @@
         padding-bottom: 0.75rem;
     }
     
+    /* When the mobile menu is open, force the nav background to transparent 
+       so the menu's own background takes over completely */
+    #main-nav:has(.mobile-menu-container.active) {
+        background: transparent;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+    
     #main-nav.scrolled .nav-logo img {
         width: 120px;
     }
@@ -135,6 +143,14 @@
                 menuBtn.classList.toggle('active');
                 mobileMenu.classList.toggle('active');
                 document.body.style.overflow = isOpen ? '' : 'hidden';
+                
+                // If opening the menu while scrolled, remove the scrolled 
+                // class from the nav temporarily so it doesn't break the background
+                if (!isOpen) {
+                    nav.classList.remove('scrolled');
+                } else if (window.pageYOffset > 100) {
+                    nav.classList.add('scrolled');
+                }
             });
             
             mobileLinks.forEach(link => {
@@ -142,6 +158,7 @@
                     menuBtn.classList.remove('active');
                     mobileMenu.classList.remove('active');
                     document.body.style.overflow = '';
+                    if (window.pageYOffset > 100) nav.classList.add('scrolled');
                 });
             });
         }

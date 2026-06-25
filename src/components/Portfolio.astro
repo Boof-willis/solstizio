@@ -147,7 +147,10 @@ const projects = [
                         entry.target.classList.add('in-view');
                     }
                 });
-            }, { threshold: 0.1 });
+            }, { 
+                threshold: 0,
+                rootMargin: "0px 0px -15% 0px"
+            });
             
             observer.observe(section);
         }
