@@ -7,18 +7,52 @@
     <div class="absolute inset-0 z-0">
         <!-- Gradient Overlay: Dark bottom -> 50% dark middle -> Light darker top for nav contrast -->
         <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-brand-black/20 z-10"></div>
-        <!-- Mobile Hero Image (optimized) -->
-        <img 
-            src="/images/mobile-hero.avif" 
-            class="w-full h-full object-cover md:hidden" 
-            alt="Luxury Interior"
-        >
-        <!-- Desktop Hero Image -->
-        <img 
-            src="https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2600&auto=format&fit=crop" 
-            class="w-full h-full object-cover hero-img scale-105 hidden md:block" 
-            alt="Luxury Interior"
-        >
+        <!-- Mobile Hero Image Carousel -->
+        <div class="md:hidden absolute inset-0 w-full h-full">
+            <img
+                src="/images/neon-bedroom-mobile.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-carousel-img-mobile opacity-100 transition-opacity duration-[2000ms]"
+                alt="Designed short-term rental bedroom with neon accent"
+            >
+            <img
+                src="/images/nightstand-mobile.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-carousel-img-mobile opacity-0 transition-opacity duration-[2000ms]"
+                alt="Styled bedroom nightstand detail"
+            >
+            <img
+                src="/images/karaoke-bar-mobile.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-carousel-img-mobile opacity-0 transition-opacity duration-[2000ms]"
+                alt="Short-term rental karaoke bar"
+            >
+            <img
+                src="/images/corn-hole-mobile.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-carousel-img-mobile opacity-0 transition-opacity duration-[2000ms]"
+                alt="Short-term rental game area with cornhole"
+            >
+        </div>
+        <!-- Desktop Hero Image Carousel -->
+        <div class="hidden md:block absolute inset-0 w-full h-full">
+            <img 
+                src="/images/casa-serenity.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-img hero-carousel-img opacity-100 transition-opacity duration-[2000ms] scale-105"
+                alt="Designed short-term rental living space"
+            >
+            <img 
+                src="/images/beatiful-bathroom-desktop.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-img hero-carousel-img opacity-0 transition-opacity duration-[2000ms] scale-105"
+                alt="Luxury short-term rental bathroom design"
+            >
+            <img 
+                src="/images/living-room-checkered-wall-desktop.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-img hero-carousel-img opacity-0 transition-opacity duration-[2000ms] scale-105"
+                alt="Short-term rental living room with checkered accent wall"
+            >
+            <img 
+                src="/images/karaoke-bar-desktop.avif"
+                class="absolute inset-0 w-full h-full object-cover hero-img hero-carousel-img opacity-0 transition-opacity duration-[2000ms] scale-105"
+                alt="Designed short-term rental karaoke bar"
+            >
+        </div>
     </div>
 
     <div class="relative z-20 w-full max-w-[1400px] px-6 md:px-12 flex flex-col md:flex-row items-start md:items-end justify-between pb-12 md:pb-24 h-full pt-32 md:pt-0">
@@ -31,23 +65,23 @@
                 </p>
             </div>
             
-            <h1 class="hero-title text-[2.75rem] sm:text-5xl md:text-7xl lg:text-8xl font-serif font-light tracking-tighter leading-[0.95] text-white">
+            <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light tracking-tighter leading-[0.95] text-white">
                 <span class="hero-word">Turnkey</span> <span class="hero-word">STR</span> <span class="hero-word">Interior</span> <br>
                 <span class="text-brand-cream italic font-normal opacity-90 hero-word-italic">Design & Setup.</span>
             </h1>
 
             <div class="hero-description max-w-md mt-6 md:mt-8 border-l border-white/20 pl-6">
                 <p class="text-base md:text-base text-gray-300 font-light leading-relaxed">
-                    <span class="text-white font-medium">Your rental, designed to stand out.</span> We're an interior design studio that turns your short-term rental into a scroll-stopping, five-star guest experience — fully designed, furnished, and photo-ready.
+                    <span class="text-white font-medium">Your rental, designed to stand out.</span> We're an interior design studio for short-term rentals. We design, furnish, and style your space top to bottom, so it photographs beautifully and earns five-star reviews from your very first guest.
                 </p>
-                <a href="#estimate" class="inline-block mt-8 bg-white text-black px-8 py-3 rounded-none text-xs font-bold uppercase tracking-widest transition-colors duration-300 hover:bg-brand-gold hover:text-black">
+                <a href="#estimate" class="hidden md:inline-block mt-8 bg-white text-black px-8 py-3 rounded-none text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:bg-brand-gold hover:text-black active:scale-[0.98]">
                     Get Your Estimate
                 </a>
             </div>
             
             <!-- Mobile CTA & Social Proof -->
             <div class="md:hidden flex flex-col items-start gap-6 hero-mobile-cta">
-                <a href="#estimate" class="inline-block mt-4 bg-white text-black px-10 py-4 rounded-none transition-colors duration-300 hover:bg-brand-gold hover:text-black">
+                <a href="#estimate" class="inline-block mt-4 bg-white text-black px-10 py-4 rounded-none transition-all duration-300 hover:bg-brand-gold hover:text-black active:scale-[0.98]">
                     <span class="text-xs font-bold tracking-widest uppercase">Get Your Estimate</span>
                 </a>
 
@@ -188,3 +222,28 @@
     }
     
 </style>
+
+<script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+        function runCarousel(images) {
+            if (images.length < 2) return;
+            let currentIndex = 0;
+
+            setInterval(() => {
+                // Fade out current
+                images[currentIndex].classList.remove('opacity-100');
+                images[currentIndex].classList.add('opacity-0');
+
+                // Move to next
+                currentIndex = (currentIndex + 1) % images.length;
+
+                // Fade in next
+                images[currentIndex].classList.remove('opacity-0');
+                images[currentIndex].classList.add('opacity-100');
+            }, 6000); // Change every 6 seconds
+        }
+
+        runCarousel(document.querySelectorAll('.hero-carousel-img'));        // desktop
+        runCarousel(document.querySelectorAll('.hero-carousel-img-mobile')); // mobile
+    });
+</script>

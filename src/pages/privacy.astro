@@ -1,0 +1,161 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = "June 25, 2026";
+---
+
+<Layout title="Privacy Policy | Solstizio Studios">
+    <!-- Simple header -->
+    <header class="w-full px-4 md:px-12 py-6 border-b border-brand-border">
+        <div class="max-w-[1100px] mx-auto flex items-center justify-between">
+            <a href="/" class="group">
+                <img src="/images/Solstizio-logo-2.png" alt="Solstizio Studios" class="w-[140px] md:w-[160px] h-auto invert transition-all duration-500 group-hover:opacity-80">
+            </a>
+            <a href="/" class="text-[10px] text-gray-500 hover:text-brand-gold uppercase tracking-widest transition-colors duration-300 flex items-center gap-2">
+                <iconify-icon icon="solar:arrow-left-linear" width="14"></iconify-icon>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="px-4 md:px-12 py-16 md:py-24">
+        <article class="max-w-[760px] mx-auto legal-content">
+            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold mb-4 block">Legal</span>
+            <h1 class="text-4xl md:text-5xl font-serif text-white tracking-tighter mb-4">Privacy Policy</h1>
+            <p class="text-xs text-brand-muted uppercase tracking-widest mb-12">Last updated: {lastUpdated}</p>
+
+            <p class="lead">
+                Solstizio Studios Inc. ("Solstizio," "we," "us," or "our") respects your privacy. This Privacy Policy explains what information we collect when you visit our website or request a project estimate, how we use it, and the choices you have.
+            </p>
+
+            <h2>1. Information We Collect</h2>
+            <p>We collect information you provide directly to us, primarily through our project estimate form. This may include:</p>
+            <ul>
+                <li><strong>Contact details</strong> — your name, email address, and phone number.</li>
+                <li><strong>Project details</strong> — property location, square footage, backyard design preferences, and the resulting estimate figures.</li>
+                <li><strong>Communications</strong> — any information you include when you email, call, or book a call with us.</li>
+            </ul>
+            <p>
+                We also automatically collect limited technical information through standard web analytics and cookies, such as your browser type, device, and how you interact with the site.
+            </p>
+
+            <h2>2. How We Use Your Information</h2>
+            <p>We use the information we collect to:</p>
+            <ul>
+                <li>Generate and deliver your project estimate.</li>
+                <li>Respond to your inquiries and schedule consultations.</li>
+                <li>Provide, maintain, and improve our services.</li>
+                <li>Send you relevant updates about your project or our offerings (you can opt out at any time).</li>
+                <li>Detect and prevent spam, fraud, and abuse.</li>
+            </ul>
+
+            <h2>3. How We Share Your Information</h2>
+            <p>
+                We do not sell your personal information. We share it only with trusted service providers who help us operate our business — for example, our customer relationship management (CRM) and email platforms that process estimate submissions. These providers are permitted to use your information only to perform services on our behalf.
+            </p>
+            <p>
+                We may also disclose information if required by law or to protect the rights, property, or safety of Solstizio, our clients, or others.
+            </p>
+
+            <h2>4. Cookies & Tracking</h2>
+            <p>
+                Our site uses cookies and similar technologies to remember your preferences and understand how the site is used. You can control cookies through your browser settings; disabling them may affect some site functionality.
+            </p>
+
+            <h2>5. Data Retention</h2>
+            <p>
+                We retain personal information for as long as necessary to provide our services, comply with our legal obligations, resolve disputes, and enforce our agreements. When information is no longer needed, we securely delete or anonymize it.
+            </p>
+
+            <h2>6. Your Rights & Choices</h2>
+            <p>
+                Depending on where you live, you may have the right to access, correct, or delete the personal information we hold about you, or to opt out of marketing communications. To make a request, contact us at the email below and we will respond in accordance with applicable law.
+            </p>
+
+            <h2>7. Data Security</h2>
+            <p>
+                We take reasonable administrative, technical, and physical measures to protect your information. However, no method of transmission over the internet is completely secure, and we cannot guarantee absolute security.
+            </p>
+
+            <h2>8. Children's Privacy</h2>
+            <p>
+                Our services are not directed to individuals under the age of 18, and we do not knowingly collect personal information from children.
+            </p>
+
+            <h2>9. Changes to This Policy</h2>
+            <p>
+                We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated" date above. Your continued use of the site after changes are posted constitutes acceptance of the updated policy.
+            </p>
+
+            <h2>10. Contact Us</h2>
+            <p>
+                If you have questions about this Privacy Policy or how we handle your information, please contact us at <a href="mailto:hello@solstizio.com">hello@solstizio.com</a>.
+            </p>
+        </article>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style is:global>
+    .legal-content .lead {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #d1d5db;
+        font-weight: 300;
+        margin-bottom: 2.5rem;
+    }
+    .legal-content h2 {
+        font-family: 'Newsreader', serif;
+        font-size: 1.5rem;
+        color: #fff;
+        letter-spacing: -0.02em;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .legal-content p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: #9ca3af;
+        font-weight: 300;
+        margin-bottom: 1.25rem;
+    }
+    .legal-content ul {
+        list-style: none;
+        margin: 0 0 1.5rem 0;
+        padding: 0;
+    }
+    .legal-content li {
+        position: relative;
+        padding-left: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #9ca3af;
+        font-weight: 300;
+        margin-bottom: 0.75rem;
+    }
+    .legal-content li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.65rem;
+        width: 6px;
+        height: 6px;
+        background: #8A9A7B;
+        border-radius: 9999px;
+    }
+    .legal-content strong {
+        color: #F2F0EB;
+        font-weight: 500;
+    }
+    .legal-content a {
+        color: #8A9A7B;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: opacity 0.3s ease;
+    }
+    .legal-content a:hover {
+        opacity: 0.75;
+    }
+</style>

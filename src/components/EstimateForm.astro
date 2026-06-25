@@ -37,7 +37,7 @@
 
             <!-- Step 1: Property Size -->
             <div id="step-1" class="estimator-step active">
-                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
+                <div class="bg-black/60 backdrop-blur-2xl shadow-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] p-6 md:p-10">
                         <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">How large is your property?</h3>
                     <p class="text-sm text-gray-400 font-light mb-8">Enter the total interior square footage. This helps us estimate design and furnishing costs.</p>
 
@@ -50,24 +50,23 @@
                                 max="15000"
                                 step="100"
                                 placeholder="e.g. 2000"
-                                class="w-full bg-transparent border border-white/15 hover:border-white/25 focus:border-white px-5 py-4 text-white text-lg md:text-xl font-light focus:outline-none transition-colors duration-300"
+                                class="w-full bg-black/40 border border-white/20 hover:border-white/30 focus:border-white px-5 py-4 text-white text-lg md:text-xl font-light focus:outline-none transition-colors duration-300"
                             >
                             <span class="absolute right-5 top-1/2 -translate-y-1/2 text-sm text-gray-500">sqft</span>
                         </div>
 
-                        <!-- Quick-select pills -->
                         <div class="flex flex-wrap gap-2">
-                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="1000">1,000</button>
-                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="1500">1,500</button>
-                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="2000">2,000</button>
-                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="3000">3,000</button>
-                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="4000">4,000</button>
-                            <button type="button" class="sqft-pill text-[10px] uppercase tracking-wider text-gray-400 border border-white/10 hover:border-brand-gold/50 hover:text-brand-gold px-4 py-2 transition-all duration-300 cursor-pointer" data-value="5000">5,000+</button>
+                            <button type="button" class="sqft-pill text-sm md:text-base uppercase tracking-wider text-gray-300 border border-white/20 hover:border-brand-gold/50 hover:text-brand-gold px-6 py-3 transition-all duration-300 cursor-pointer bg-black/40" data-value="1000">1,000</button>
+                            <button type="button" class="sqft-pill text-sm md:text-base uppercase tracking-wider text-gray-300 border border-white/20 hover:border-brand-gold/50 hover:text-brand-gold px-6 py-3 transition-all duration-300 cursor-pointer bg-black/40" data-value="1500">1,500</button>
+                            <button type="button" class="sqft-pill text-sm md:text-base uppercase tracking-wider text-gray-300 border border-white/20 hover:border-brand-gold/50 hover:text-brand-gold px-6 py-3 transition-all duration-300 cursor-pointer bg-black/40" data-value="2000">2,000</button>
+                            <button type="button" class="sqft-pill text-sm md:text-base uppercase tracking-wider text-gray-300 border border-white/20 hover:border-brand-gold/50 hover:text-brand-gold px-6 py-3 transition-all duration-300 cursor-pointer bg-black/40" data-value="3000">3,000</button>
+                            <button type="button" class="sqft-pill text-sm md:text-base uppercase tracking-wider text-gray-300 border border-white/20 hover:border-brand-gold/50 hover:text-brand-gold px-6 py-3 transition-all duration-300 cursor-pointer bg-black/40" data-value="4000">4,000</button>
+                            <button type="button" class="sqft-pill text-sm md:text-base uppercase tracking-wider text-gray-300 border border-white/20 hover:border-brand-gold/50 hover:text-brand-gold px-6 py-3 transition-all duration-300 cursor-pointer bg-black/40" data-value="5000">5,000+</button>
                         </div>
                     </div>
 
                     <div class="mt-8 flex justify-end">
-                        <button type="button" id="next-1" class="est-next-btn bg-brand-gold/10 hover:bg-brand-gold text-brand-gold hover:text-black border border-brand-gold/20 hover:border-brand-gold px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(138,154,123,0.3)] relative overflow-hidden group cursor-pointer">
+                        <button type="button" id="next-1" class="est-next-btn bg-brand-gold/10 hover:bg-brand-gold text-brand-gold hover:text-black border border-brand-gold/20 hover:border-brand-gold px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_20px_-8px_rgba(138,154,123,0.5)] active:scale-[0.98] relative overflow-hidden group cursor-pointer">
                             <span class="relative z-10 flex items-center gap-2">Next <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon></span>
                             <div class="absolute inset-0 bg-brand-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out"></div>
                         </button>
@@ -77,20 +76,20 @@
 
             <!-- Step 2: Backyard -->
             <div id="step-2" class="estimator-step">
-                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
+                <div class="bg-black/60 backdrop-blur-2xl shadow-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] p-6 md:p-10">
                     <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">Does your property need backyard design?</h3>
                     <p class="text-sm text-gray-400 font-light mb-8">If your rental has outdoor space that needs styling, we'll include a backyard design plan.</p>
 
                     <div class="grid grid-cols-2 gap-4">
-                        <button type="button" class="backyard-option group border border-white/15 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer" data-value="yes">
-                            <iconify-icon icon="solar:sun-2-linear" width="32" class="text-gray-500 group-hover:text-brand-gold transition-colors duration-300 mb-3 block mx-auto"></iconify-icon>
-                            <span class="text-lg md:text-xl font-serif text-white block mb-1 tracking-tight">Yes</span>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-wider">+ $500 design fee</span>
+                        <button type="button" class="backyard-option group border border-white/20 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer bg-black/40" data-value="yes">
+                            <iconify-icon icon="solar:sun-2-linear" width="40" class="text-gray-400 group-hover:text-brand-gold transition-colors duration-300 mb-4 block mx-auto"></iconify-icon>
+                            <span class="text-2xl md:text-3xl font-serif text-white block mb-2 tracking-tight">Yes</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider">+ $500 design fee</span>
                         </button>
-                        <button type="button" class="backyard-option group border border-white/15 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer" data-value="no">
-                            <iconify-icon icon="solar:home-2-linear" width="32" class="text-gray-500 group-hover:text-brand-gold transition-colors duration-300 mb-3 block mx-auto"></iconify-icon>
-                            <span class="text-lg md:text-xl font-serif text-white block mb-1 tracking-tight">No</span>
-                            <span class="text-[10px] text-gray-500 uppercase tracking-wider">Interior only</span>
+                        <button type="button" class="backyard-option group border border-white/20 hover:border-brand-gold p-6 md:p-8 text-center transition-all duration-300 cursor-pointer bg-black/40" data-value="no">
+                            <iconify-icon icon="solar:home-2-linear" width="40" class="text-gray-400 group-hover:text-brand-gold transition-colors duration-300 mb-4 block mx-auto"></iconify-icon>
+                            <span class="text-2xl md:text-3xl font-serif text-white block mb-2 tracking-tight">No</span>
+                            <span class="text-xs text-gray-400 uppercase tracking-wider">Interior only</span>
                         </button>
                     </div>
 
@@ -104,26 +103,34 @@
 
             <!-- Step 3: Contact Info -->
             <div id="step-3" class="estimator-step">
-                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
+                <div class="bg-black/60 backdrop-blur-2xl shadow-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] p-6 md:p-10">
                     <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">Where should we send your estimate?</h3>
                     <p class="text-sm text-gray-400 font-light mb-8">Enter your details below and we'll email your custom project estimate instantly.</p>
 
                     <div class="space-y-5">
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div class="relative">
-                                <input type="text" id="est-name" required placeholder="Full Name" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                                <input type="text" id="est-name" required placeholder="Full Name" class="w-full bg-black/40 border border-white/20 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-400 focus:outline-none transition-colors duration-300">
                             </div>
                             <div class="relative">
-                                <input type="email" id="est-email" required placeholder="Email Address" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                                <input type="email" id="est-email" required placeholder="Email Address" class="w-full bg-black/40 border border-white/20 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-400 focus:outline-none transition-colors duration-300">
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div class="relative">
-                                <input type="tel" id="est-phone" placeholder="Phone (optional)" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                                <input type="tel" id="est-phone" placeholder="Phone (optional)" class="w-full bg-black/40 border border-white/20 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-400 focus:outline-none transition-colors duration-300">
                             </div>
                             <div class="relative">
-                                <input type="text" id="est-location" placeholder="Property City / State" class="w-full bg-transparent border border-white/15 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-600 focus:outline-none transition-colors duration-300">
+                                <input type="text" id="est-location" placeholder="Property City / State" class="w-full bg-black/40 border border-white/20 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-400 focus:outline-none transition-colors duration-300">
                             </div>
+                        </div>
+
+                        <!-- Honeypot fields: hidden from real users, only bots fill these -->
+                        <div class="hp-wrap" aria-hidden="true">
+                            <label for="est-website">Website</label>
+                            <input type="text" id="est-website" name="website" tabindex="-1" autocomplete="off">
+                            <label for="est-company">Company</label>
+                            <input type="text" id="est-company" name="company" tabindex="-1" autocomplete="off">
                         </div>
                     </div>
 
@@ -131,13 +138,13 @@
                         <button type="button" id="back-3" class="est-back-btn text-sm text-gray-500 hover:text-white transition-colors duration-300 flex items-center gap-2 cursor-pointer">
                             <iconify-icon icon="solar:arrow-left-linear" width="14"></iconify-icon> Back
                         </button>
-                        <button type="button" id="submit-estimate" class="est-next-btn bg-brand-gold hover:bg-brand-gold/80 text-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 cursor-pointer flex items-center gap-2">
+                        <button type="button" id="submit-estimate" class="est-next-btn bg-brand-gold hover:bg-brand-gold/80 text-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 cursor-pointer flex items-center gap-2 active:scale-[0.98]">
                             <span>See My Estimate</span>
                             <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon>
                         </button>
                     </div>
 
-                    <p class="text-[10px] text-gray-600 mt-4 text-center">Your info is kept private. No spam, ever.</p>
+                    <p class="text-xs text-gray-400 mt-4 text-center">Your info is kept private. No spam, ever.</p>
                 </div>
             </div>
 
@@ -180,7 +187,7 @@
 
             <!-- Step 4: Results -->
             <div id="step-4" class="estimator-step">
-                <div class="bg-black/90 backdrop-blur-md shadow-2xl border border-brand-border p-6 md:p-10">
+                <div class="bg-black/60 backdrop-blur-2xl shadow-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] p-6 md:p-10">
                     <div class="text-center mb-8">
                         <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand-gold/10 border border-brand-gold/20 mb-4">
                             <iconify-icon icon="solar:check-circle-linear" class="text-brand-gold" width="28"></iconify-icon>
@@ -190,7 +197,7 @@
                     </div>
 
                     <!-- Estimate Breakdown -->
-                    <div class="space-y-0 border border-brand-border divide-y divide-brand-border mb-8">
+                    <div class="space-y-0 border border-white/20 divide-y divide-white/10 mb-8 bg-black/40">
                         <div class="flex justify-between items-center p-4 md:p-5">
                             <div>
                                 <span class="text-sm text-white block">Design Fee</span>
@@ -221,11 +228,11 @@
                         </div>
                     </div>
 
-                    <p class="text-[10px] text-gray-500 text-center mb-6">This is an estimate. Final pricing may vary based on design selections and property specifics.</p>
+                    <p class="text-xs text-gray-400 text-center mb-6">This is an estimate. Final pricing may vary based on design selections and property specifics.</p>
 
                     <!-- CTA -->
                     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-                        <a href="#" class="inline-flex items-center justify-center gap-2 bg-brand-gold hover:bg-brand-gold/80 text-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500">
+                        <a href="https://calendly.com/appointments-solstiziostudios/30min?month=2026-06" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-brand-gold hover:bg-brand-gold/80 text-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500">
                             <iconify-icon icon="solar:calendar-linear" width="16"></iconify-icon>
                             Schedule a Call to Discuss
                         </a>
@@ -266,6 +273,18 @@
 </section>
 
 <style>
+    /* Honeypot: keep in DOM (bots fill it) but invisible & unreachable for humans */
+    .hp-wrap {
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        opacity: 0;
+        pointer-events: none;
+    }
+
     /* Header animation */
     .estimator-header {
         opacity: 0;
@@ -493,6 +512,11 @@ document.addEventListener('DOMContentLoaded', function() {
             document.querySelectorAll('.sqft-pill').forEach(function(p) { p.classList.remove('selected'); });
             this.classList.add('selected');
             document.getElementById('est-sqft').value = this.dataset.value;
+            
+            // Auto advance to next step after a short delay
+            setTimeout(function() {
+                document.getElementById('next-1').click();
+            }, 400);
         });
     });
 
@@ -528,8 +552,16 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('back-3').addEventListener('click', function() { goToStep(2, 'back'); });
 
     // ── Webhook URL ──
-    // Replace this with your CRM webhook endpoint
-    var WEBHOOK_URL = '';
+    var WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/0mArnrVrlznFEyZADuyO/webhook-trigger/f0813ea4-bca0-4f6f-8a8d-58a63bfe900f';
+
+    // Time-trap: record when the form became interactive. Submissions faster
+    // than this threshold are almost certainly bots.
+    var formLoadTime = Date.now();
+    var MIN_FILL_MS = 3000;
+
+    function formatCurrencyStr(n) {
+        return '$' + Number(n).toLocaleString('en-US');
+    }
 
     function buildPayload() {
         var sqft = data.sqft;
@@ -539,6 +571,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var furnishHigh = sqft * 25;
         var totalLow = designFee + backyardFee + furnishLow;
         var totalHigh = designFee + backyardFee + furnishHigh;
+        var estimateRange = formatCurrencyStr(totalLow) + ' – ' + formatCurrencyStr(totalHigh);
 
         return {
             name: data.name,
@@ -546,13 +579,17 @@ document.addEventListener('DOMContentLoaded', function() {
             phone: data.phone,
             location: data.location,
             sqft: sqft,
-            backyard: data.backyard,
+            backyard: data.backyard ? 'yes' : 'no',
             design_fee: designFee,
             backyard_fee: backyardFee,
             furnish_low: furnishLow,
             furnish_high: furnishHigh,
             total_low: totalLow,
             total_high: totalHigh,
+            estimate_range: estimateRange,
+            estimate_total_low: formatCurrencyStr(totalLow),
+            estimate_total_high: formatCurrencyStr(totalHigh),
+            source: 'Project Estimator',
             submitted_at: new Date().toISOString()
         };
     }
@@ -607,6 +644,14 @@ document.addEventListener('DOMContentLoaded', function() {
         data.phone = document.getElementById('est-phone').value.trim();
         data.location = document.getElementById('est-location').value.trim();
 
+        // ── Bot filtering ──
+        // 1. Honeypot fields: if filled, it's a bot.
+        var hpWebsite = document.getElementById('est-website').value;
+        var hpCompany = document.getElementById('est-company').value;
+        var isBot = !!(hpWebsite || hpCompany);
+        // 2. Time-trap: real users take more than a few seconds to fill the form.
+        if (Date.now() - formLoadTime < MIN_FILL_MS) isBot = true;
+
         var payload = buildPayload();
         populateHiddenFields(payload);
 
@@ -621,7 +666,11 @@ document.addEventListener('DOMContentLoaded', function() {
         var LOADING_MIN_MS = 2800;
         var loadStart = Date.now();
 
-        fireWebhook(payload).then(function() {
+        // Silently skip the webhook for detected bots, but still show the
+        // result UI so we don't tip them off.
+        var sendPromise = isBot ? Promise.resolve() : fireWebhook(payload);
+
+        sendPromise.then(function() {
             var elapsed = Date.now() - loadStart;
             var remaining = Math.max(0, LOADING_MIN_MS - elapsed);
             setTimeout(function() {

@@ -13,7 +13,7 @@ const steps = [
         number: "02",
         title: "Order & Procure",
         timeline: "4 Weeks",
-        description: "Through our trade partnerships, we source all furniture, decor, and essentials — tailored to your budget. We handle every order, track every shipment, and receive items at our warehouse for inspection.",
+        description: "Through our trade partnerships, we source all furniture, decor, and essentials, tailored to your budget. We handle every order, track every shipment, and receive items at our warehouse for inspection.",
         deliverables: ["Trade-priced furnishings", "Shipment tracking", "Warehouse inspection"],
         icon: "solar:box-minimalistic-linear"
     },
@@ -24,6 +24,27 @@ const steps = [
         description: "Our team brings it all together on-site. We assemble, arrange, and style every detail so your property is photo-ready and guest-ready from day one.",
         deliverables: ["Full assembly & placement", "Decor styling", "Photo-ready walkthrough"],
         icon: "solar:armchair-2-linear"
+    }
+];
+
+const boards = [
+    {
+        image: "/images/canvas_mid-century-shea-221121_1950.avif",
+        label: "Living & Bedroom",
+        room: "Mid-Century",
+        alt: "Solstizio mood board for a mid-century living room and bedroom design"
+    },
+    {
+        image: "/images/canvas_butlers-pantry-221121_1951.avif",
+        label: "Kitchen & Pantry",
+        room: "Butler's Pantry",
+        alt: "Solstizio mood board for a kitchen and butler's pantry design"
+    },
+    {
+        image: "/images/canvas_powder-room-221121_1951.avif",
+        label: "Bath",
+        room: "Powder Room",
+        alt: "Solstizio mood board for a luxury powder room design"
     }
 ];
 ---
@@ -42,8 +63,11 @@ const steps = [
                         <span class="process-title-line">in 6 Weeks.</span>
                     </span>
                 </h3>
-                <p class="process-desc mt-4 md:mt-8 text-sm text-gray-400 font-light leading-relaxed">
-                    You provide the property — we handle everything else. Design, ordering, warehousing, assembly, and styling. Your only job is to hand us the keys.
+                <p class="process-desc mt-4 md:mt-8 text-base text-gray-300 font-light leading-relaxed">
+                    You provide the property. We handle everything else: design, ordering, warehousing, assembly, and styling. Your only job is to hand us the keys.
+                </p>
+                <p class="process-desc mt-3 md:mt-4 text-base text-brand-gold font-light leading-relaxed">
+                    Speed matters in this business. Every day a property sits unfinished is lost revenue. Our design-to-launch process is one of the fastest in the industry, so you get to market sooner without cutting corners on quality.
                 </p>
 
                 <!-- Behind the scenes photo removed -->
@@ -60,19 +84,19 @@ const steps = [
                         <div class="process-step-line absolute left-0 top-0 h-full w-[2px] bg-brand-gold/0 group-hover:bg-brand-gold/50 transition-colors duration-700"></div>
                         
                         <div class="flex items-start gap-4 md:justify-between relative z-10">
-                            <span class="process-number text-xs font-mono text-brand-gold mt-0.5 md:mt-1 shrink-0 transition-all duration-500">{step.number}</span>
+                            <span class="process-number text-sm font-mono text-brand-gold mt-0.5 md:mt-1 shrink-0 transition-all duration-500">{step.number}</span>
                             <div class="flex-1 md:w-10/12">
                                 <div class="flex items-start justify-between gap-4">
                                     <div class="flex items-center gap-3">
-                                        <h4 class="process-step-title text-xl md:text-2xl font-serif text-white mb-0 tracking-tight">{step.title}</h4>
-                                        <span class="text-[9px] font-bold uppercase tracking-widest text-brand-gold/70 border border-brand-gold/20 px-2 py-0.5 rounded-full whitespace-nowrap">{step.timeline}</span>
+                                        <h4 class="process-step-title text-2xl md:text-3xl font-serif text-white mb-0 tracking-tight">{step.title}</h4>
+                                        <span class="text-[10px] font-bold uppercase tracking-widest text-brand-gold/90 border border-brand-gold/30 px-2.5 py-1 rounded-sm whitespace-nowrap">{step.timeline}</span>
                                     </div>
-                                    <iconify-icon icon={step.icon} class="process-step-icon text-white opacity-30 md:opacity-20 group-hover:opacity-100 group-hover:text-brand-gold group-hover:rotate-6 transition-all duration-500 shrink-0" width="20"></iconify-icon>
+                                    <iconify-icon icon={step.icon} class="process-step-icon text-white opacity-40 md:opacity-30 group-hover:opacity-100 group-hover:text-brand-gold group-hover:rotate-6 transition-all duration-500 shrink-0" width="24"></iconify-icon>
                                 </div>
-                                <p class="process-step-desc text-sm text-gray-500 font-light max-w-md group-hover:text-gray-300 transition-colors duration-500 mb-3">{step.description}</p>
+                                <p class="process-step-desc text-base text-gray-400 font-light max-w-md group-hover:text-gray-200 transition-colors duration-500 mb-4">{step.description}</p>
                                 <div class="flex flex-wrap gap-2">
                                     {step.deliverables.map((d: string) => (
-                                        <span class="text-[9px] uppercase tracking-wider text-brand-gold/60 bg-brand-gold/5 border border-brand-gold/10 px-2.5 py-1 rounded-full group-hover:text-brand-gold/90 group-hover:border-brand-gold/25 transition-all duration-500">{d}</span>
+                                        <span class="text-[10px] uppercase tracking-wider text-brand-gold/80 bg-brand-gold/10 border border-brand-gold/20 px-3 py-1.5 rounded-sm group-hover:text-brand-gold group-hover:border-brand-gold/40 transition-all duration-500">{d}</span>
                                     ))}
                                 </div>
                             </div>
@@ -80,6 +104,35 @@ const steps = [
                         
                         <!-- Bottom border animation -->
                         <div class="absolute bottom-0 left-0 h-[1px] w-0 bg-brand-gold/20 group-hover:w-full transition-all duration-700"></div>
+                    </div>
+                ))}
+            </div>
+        </div>
+
+        <!-- Design Boards: visual proof of Step 01 -->
+        <div class="process-boards mt-14 md:mt-24 pt-10 md:pt-12 border-t border-brand-border">
+            <div class="flex items-end justify-between mb-6 md:mb-8">
+                <h4 class="text-lg md:text-xl font-serif italic text-white tracking-tight">Inside the Design</h4>
+                <span class="text-[9px] md:text-xs uppercase tracking-widest text-brand-muted">Mood boards from real Solstizio projects</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6">
+                {boards.map((board, index) => (
+                    <div class="process-board group relative overflow-hidden border border-brand-border bg-brand-panel" style={`--board-delay: ${index * 0.12}s`}>
+                        <div class="aspect-[4/3] overflow-hidden">
+                            <img
+                                src={board.image}
+                                alt={board.alt}
+                                loading="lazy"
+                                decoding="async"
+                                class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                            >
+                        </div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 md:p-5 flex items-center justify-between z-10">
+                            <span class="text-[10px] md:text-xs uppercase tracking-widest text-brand-cream font-bold">{board.label}</span>
+                            <span class="text-[9px] uppercase tracking-widest text-brand-gold">{board.room}</span>
+                        </div>
+                        <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-gold/50 group-hover:w-full transition-all duration-700 z-10"></div>
                     </div>
                 ))}
             </div>
@@ -150,6 +203,26 @@ const steps = [
         }
     }
     
+    /* Design boards reveal */
+    .process-boards {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .process-section.in-view .process-boards {
+        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+    }
+
+    .process-board {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    .process-section.in-view .process-board {
+        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        animation-delay: calc(0.5s + var(--board-delay));
+    }
+
     /* Hover state for step line */
     .process-step-line {
         transform: scaleY(0);

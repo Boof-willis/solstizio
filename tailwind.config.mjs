@@ -15,7 +15,8 @@ export default {
       },
       fontFamily: {
         serif: ['Newsreader', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Satoshi', 'sans-serif'],
+        mono: ['JetBrains Mono', 'monospace'],
       },
       letterSpacing: {
         'tightest': '-0.04em',

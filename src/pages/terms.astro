@@ -1,0 +1,156 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Footer from '../components/Footer.astro';
+
+const lastUpdated = "June 25, 2026";
+---
+
+<Layout title="Terms of Service | Solstizio Studios">
+    <!-- Simple header -->
+    <header class="w-full px-4 md:px-12 py-6 border-b border-brand-border">
+        <div class="max-w-[1100px] mx-auto flex items-center justify-between">
+            <a href="/" class="group">
+                <img src="/images/Solstizio-logo-2.png" alt="Solstizio Studios" class="w-[140px] md:w-[160px] h-auto invert transition-all duration-500 group-hover:opacity-80">
+            </a>
+            <a href="/" class="text-[10px] text-gray-500 hover:text-brand-gold uppercase tracking-widest transition-colors duration-300 flex items-center gap-2">
+                <iconify-icon icon="solar:arrow-left-linear" width="14"></iconify-icon>
+                <span>Back to Home</span>
+            </a>
+        </div>
+    </header>
+
+    <main class="px-4 md:px-12 py-16 md:py-24">
+        <article class="max-w-[760px] mx-auto legal-content">
+            <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold mb-4 block">Legal</span>
+            <h1 class="text-4xl md:text-5xl font-serif text-white tracking-tighter mb-4">Terms of Service</h1>
+            <p class="text-xs text-brand-muted uppercase tracking-widest mb-12">Last updated: {lastUpdated}</p>
+
+            <p class="lead">
+                These Terms of Service ("Terms") govern your use of the Solstizio Studios Inc. ("Solstizio," "we," "us," or "our") website and the services we offer. By accessing our website or submitting a request through it, you agree to these Terms.
+            </p>
+
+            <h2>1. Our Services</h2>
+            <p>
+                Solstizio provides interior design, furnishing, procurement, and installation services for short-term rental properties. The specific scope, deliverables, timeline, and pricing for any project are defined in a separate written agreement or proposal between you and Solstizio. These Terms govern your use of our website and do not by themselves create a design services contract.
+            </p>
+
+            <h2>2. Project Estimates</h2>
+            <p>
+                Any estimate generated through our website — including figures for design fees, furnishings, and totals — is a <strong>non-binding approximation</strong> provided for general guidance only. Estimates are based on the information you submit and standard assumptions. Final pricing may vary based on design selections, property specifics, site conditions, and material availability, and will be confirmed in a formal proposal before any work begins.
+            </p>
+
+            <h2>3. Use of the Website</h2>
+            <p>You agree not to:</p>
+            <ul>
+                <li>Use the site for any unlawful purpose or in violation of these Terms.</li>
+                <li>Submit false, misleading, or automated (bot) submissions through our forms.</li>
+                <li>Attempt to disrupt, damage, or gain unauthorized access to the site or its systems.</li>
+                <li>Copy, reproduce, or redistribute site content without our written permission.</li>
+            </ul>
+
+            <h2>4. Intellectual Property</h2>
+            <p>
+                All content on this website — including text, graphics, logos, photography, and design — is the property of Solstizio or its licensors and is protected by applicable intellectual property laws. You may not use our marks or content without prior written consent.
+            </p>
+
+            <h2>5. Third-Party Links</h2>
+            <p>
+                Our site may contain links to third-party websites or services (such as scheduling or social media platforms). We are not responsible for the content, policies, or practices of those third parties, and your use of them is at your own risk.
+            </p>
+
+            <h2>6. Disclaimers</h2>
+            <p>
+                The website and its content are provided "as is" and "as available" without warranties of any kind, whether express or implied, including warranties of merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the site will be uninterrupted, error-free, or secure.
+            </p>
+
+            <h2>7. Limitation of Liability</h2>
+            <p>
+                To the fullest extent permitted by law, Solstizio will not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, arising out of your use of — or inability to use — the website. Nothing in these Terms limits liability that cannot be limited under applicable law.
+            </p>
+
+            <h2>8. Indemnification</h2>
+            <p>
+                You agree to indemnify and hold harmless Solstizio and its officers, employees, and agents from any claims, damages, or expenses arising from your misuse of the website or violation of these Terms.
+            </p>
+
+            <h2>9. Governing Law</h2>
+            <p>
+                These Terms are governed by the laws of the State of Arizona, without regard to its conflict-of-laws principles. Any disputes arising under these Terms will be subject to the exclusive jurisdiction of the state and federal courts located in Arizona.
+            </p>
+
+            <h2>10. Changes to These Terms</h2>
+            <p>
+                We may update these Terms from time to time. When we do, we will revise the "Last updated" date above. Your continued use of the site after changes are posted constitutes acceptance of the updated Terms.
+            </p>
+
+            <h2>11. Contact Us</h2>
+            <p>
+                If you have questions about these Terms, please contact us at <a href="mailto:hello@solstizio.com">hello@solstizio.com</a>.
+            </p>
+        </article>
+    </main>
+
+    <Footer />
+</Layout>
+
+<style is:global>
+    .legal-content .lead {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #d1d5db;
+        font-weight: 300;
+        margin-bottom: 2.5rem;
+    }
+    .legal-content h2 {
+        font-family: 'Newsreader', serif;
+        font-size: 1.5rem;
+        color: #fff;
+        letter-spacing: -0.02em;
+        margin-top: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .legal-content p {
+        font-size: 0.95rem;
+        line-height: 1.8;
+        color: #9ca3af;
+        font-weight: 300;
+        margin-bottom: 1.25rem;
+    }
+    .legal-content ul {
+        list-style: none;
+        margin: 0 0 1.5rem 0;
+        padding: 0;
+    }
+    .legal-content li {
+        position: relative;
+        padding-left: 1.5rem;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        color: #9ca3af;
+        font-weight: 300;
+        margin-bottom: 0.75rem;
+    }
+    .legal-content li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.65rem;
+        width: 6px;
+        height: 6px;
+        background: #8A9A7B;
+        border-radius: 9999px;
+    }
+    .legal-content strong {
+        color: #F2F0EB;
+        font-weight: 500;
+    }
+    .legal-content a {
+        color: #8A9A7B;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        transition: opacity 0.3s ease;
+    }
+    .legal-content a:hover {
+        opacity: 0.75;
+    }
+</style>

@@ -15,53 +15,53 @@
 
                     <div class="overflow-hidden">
                         <img
-                            src="/images/team-photo.jpg"
-                            alt="Hannah McKernan & Montara Kiss — Solstizio Studios"
+                            src="/images/Hannah-Founder.jpg"
+                            alt="Hannah McKernan, Founder of Solstizio Studios"
                             class="about-image w-full aspect-[3/4] object-cover object-top"
                         >
                     </div>
 
                     <!-- Floating credential tag -->
                     <div class="about-tag absolute -bottom-5 -right-4 md:-right-6 bg-brand-black border border-brand-border px-5 py-4">
-                        <span class="block text-[9px] uppercase tracking-widest text-brand-gold mb-0.5">Published In</span>
-                        <span class="block text-xs font-serif text-white tracking-tight">Arizona & Ohio</span>
+                        <span class="block text-[9px] uppercase tracking-widest text-brand-gold mb-0.5">Credential</span>
+                        <span class="block text-xs font-serif text-white tracking-tight">Certified Hospitality Designer</span>
                     </div>
                 </div>
             </div>
 
             <!-- Content Column -->
             <div class="lg:col-span-7 about-content">
-                <span class="about-label text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold mb-3 md:mb-4 block">The Studio</span>
+                <span class="about-label text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-gold mb-3 md:mb-4 block">The Designer</span>
 
                 <h2 class="about-title text-3xl md:text-4xl lg:text-5xl font-serif leading-tight text-white mb-6 md:mb-8 tracking-tighter">
-                    A team built<br>for this.
+                    Built for<br>this.
                 </h2>
 
                 <div class="space-y-4 about-body">
                     <p class="text-sm md:text-base text-gray-300 font-light leading-relaxed">
-                        <span class="text-brand-cream font-normal">Hannah McKernan</span> founded Solstizio Studios with one focus: creating short-term rental spaces that guests actually remember. With a B.A. from Kent State, a hospitality design certification from Parsons New School, and a Master's of Architecture underway at ASU — she brings serious design knowledge to every project.
+                        <span class="text-brand-cream font-normal">Hannah McKernan</span> founded Solstizio Studios with one focus: short-term rental spaces that guests actually remember. As a <span class="text-brand-cream font-normal">Certified Hospitality Designer</span> with a B.A. from Kent State and continuing education from Parsons School of Design, she brings real construction experience, design training, and hospitality credentials to every project. Great STR design has to do more than look good in photos. The space also has to survive constant turnover, work the way guests expect, and earn its keep.
                     </p>
                     <p class="text-sm md:text-base text-gray-400 font-light leading-relaxed">
-                        Alongside her is <span class="text-brand-cream font-normal">Montara Kiss</span>, Lead Interior Designer and project manager. Montara brings hands-on experience across residential design, renovation, and construction — making sure every project runs on time and on vision.
+                        With <span class="text-brand-cream font-normal">7 years of STR experience</span>, Hannah served as the designer for <span class="text-brand-cream font-normal">Resort Style Vacation Homes</span>, one of the pioneering companies in the short-term rental industry, where she turned large residential estates into luxury, amenity-driven vacation properties built to compete directly with five-star resorts. That's firsthand experience designing properties to perform at the highest level of the STR market.
                     </p>
                     <p class="text-sm md:text-base text-gray-400 font-light leading-relaxed">
-                        Together, they've designed 20+ STR properties across the country. They travel to every project, manage every detail, and don't hand over the keys until your space is photo-ready and guest-ready from day one.
+                        As the owner, Hannah personally visits and works on every property we take on, not only the ones she's leading. We use STR performance data too, but real operating experience tells us more than a spreadsheet ever could. The result is design that looks great and is built to perform.
                     </p>
                 </div>
 
                 <!-- Credentials row -->
                 <div class="about-creds grid grid-cols-3 gap-4 mt-8 md:mt-10 pt-8 md:pt-10 border-t border-brand-border">
                     <div>
-                        <span class="block text-lg md:text-xl font-serif text-white mb-0.5 tracking-tight">Turnkey</span>
-                        <span class="text-[9px] uppercase tracking-widest text-brand-muted">End-to-End STR<br>Design & Install</span>
+                        <span class="block text-lg md:text-xl font-serif text-white mb-0.5 tracking-tight">Certified</span>
+                        <span class="text-[9px] uppercase tracking-widest text-brand-muted">Hospitality Designer<br>Parsons-Trained</span>
                     </div>
                     <div>
-                        <span class="block text-lg md:text-xl font-serif text-white mb-0.5 tracking-tight">Parsons</span>
-                        <span class="text-[9px] uppercase tracking-widest text-brand-muted">Certified<br>Hospitality Design</span>
+                        <span class="block text-lg md:text-xl font-serif text-white mb-0.5 tracking-tight">7 Years</span>
+                        <span class="text-[9px] uppercase tracking-widest text-brand-muted">Luxe STR Design<br>Experience</span>
                     </div>
                     <div>
-                        <span class="block text-lg md:text-xl font-serif text-white mb-0.5 tracking-tight">Scottsdale</span>
-                        <span class="text-[9px] uppercase tracking-widest text-brand-muted">Based, Travels<br>Nationwide</span>
+                        <span class="block text-lg md:text-xl font-serif text-white mb-0.5 tracking-tight">Hands-On</span>
+                        <span class="text-[9px] uppercase tracking-widest text-brand-muted">Hannah on<br>Every Project</span>
                     </div>
                 </div>
             </div>
@@ -90,6 +90,9 @@
 
     .about-image {
         transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
     }
 
     .about-image-col:hover .about-image {

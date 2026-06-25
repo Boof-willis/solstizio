@@ -19,7 +19,8 @@ const { title } = Astro.props;
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..600;1,6..72,200..600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet">
     
     <!-- AOS Animation Library -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -30,9 +31,6 @@ const { title } = Astro.props;
 </head>
 
 <body class="bg-brand-black text-brand-cream selection:bg-brand-gold/30 selection:text-white antialiased overflow-x-hidden relative">
-    <!-- Noise Texture for cinematic feel (hidden on hero via CSS) -->
-    <div class="noise-overlay"></div>
-    
     <slot />
     
     <!-- AOS Init -->
@@ -54,7 +52,7 @@ const { title } = Astro.props;
 <style is:global>
     /* Typography refinements */
     body { 
-        font-family: 'Inter', sans-serif; 
+        font-family: 'Satoshi', sans-serif; 
         font-weight: 300; 
     }
     
@@ -162,6 +160,9 @@ const { title } = Astro.props;
     }
     .img-zoom {
         transition: transform 1.8s var(--ease-out-expo), filter 1s var(--ease-out-expo);
+        transform: translateZ(0);
+        will-change: transform;
+        backface-visibility: hidden;
     }
     .group:hover .img-zoom { 
         transform: scale(1.08); 
@@ -333,7 +334,7 @@ const { title } = Astro.props;
     textarea:-webkit-autofill:hover,
     textarea:-webkit-autofill:focus {
         -webkit-text-fill-color: #F2F0EB;
-        -webkit-box-shadow: 0 0 0px 1000px #0A0A0A inset;
+        -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0.6) inset;
         transition: background-color 5000s ease-in-out 0s;
     }
     
@@ -356,18 +357,6 @@ const { title } = Astro.props;
         width: 100%;
     }
     
-    /* Subtle Noise Texture Overlay */
-    .noise-overlay {
-        position: absolute;
-        top: 100vh; 
-        left: 0; 
-        width: 100%; 
-        height: calc(100% - 100vh);
-        pointer-events: none;
-        z-index: 9999;
-        opacity: 0.005;
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    }
     
     /* Fallback for AOS */
     [data-aos] {

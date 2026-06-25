@@ -2,24 +2,67 @@
 // Reviews section component
 const reviews = [
     {
-        text: "They made designing our short-term rental SO easy. We were set up and booking in no time. Couldn't be happier.",
-        name: "Mike & Jenna T.",
-        detail: "Scottsdale, AZ",
-        headshot: "/images/headshot-mike-jenna-placeholder.jpg"
+        text: "From day one, they handled everything, design, setup, logistics, and all the small details that most people overlook when launching an Airbnb. What stood out the most was how truly hands-off the entire process was for me. I didn’t have to chase anything down or micromanage. They came in with a clear plan, executed it at a high level, and delivered a finished product that looked and felt like a premium listing from day one. They don’t just set up a property, they build something that’s actually positioned to perform.",
+        name: "Juan David",
+        detail: "Airbnb Investor",
+        initials: "JD"
     },
     {
-        text: "As first-time investors, we had no idea where to start. Solstizio walked us through everything and the final result blew us away.",
-        name: "Sarah M.",
-        detail: "First-Time STR Investor",
-        headshot: "/images/headshot-sarah-placeholder.jpg"
+        text: "Everything went smoothly and the team worked swiftly to help furnish our house and make it a home. I can’t thank them enough for their creativity and attention to detail! We’re obsessed with the outcome.",
+        name: "Basia Billman",
+        detail: "Homeowner",
+        initials: "BB"
     },
     {
-        text: "The design, communication, and attention to detail were incredible. Our listing photos turned out amazing and we started getting bookings right away.",
-        name: "David R.",
-        detail: "Out-of-State Investor",
-        headshot: "/images/headshot-david-placeholder.jpg"
+        text: "What an amazing service. They were very much a white glove service, coordinating and communicating with me every step of the way when setting up the furnishing for my place. I could not recommend them enough!",
+        name: "Alberto Pareja-Lecaros",
+        detail: "Property Owner",
+        initials: "AP"
+    },
+    {
+        text: "We have worked with Hannah on a long term basis. She has transformed many properties in our portfolio. Hannah and her team are easy to work with, and have a beautiful eye for design.",
+        name: "Bill Tierney",
+        detail: "Portfolio Investor",
+        initials: "BT"
+    },
+    {
+        text: "If you’re looking for a professional group who pay attention to details and go above and beyond to deliver quality services, and most importantly, treat your project with care, Solstizio Studio is perfect for you.",
+        name: "Patch Leveille",
+        detail: "Property Owner",
+        initials: "PL"
+    },
+    {
+        text: "This is the second time we’ve worked with Solstizio Studios, and once again, they completely exceeded our expectations. Their team handled every detail of our Airbnb design with a level of professionalism and creativity that’s hard to find. Every room feels intentional and perfectly on brand for our property.",
+        name: "Phillip Owen",
+        detail: "Repeat Airbnb Investor",
+        initials: "PO"
+    },
+    {
+        text: "I can’t recommend Solstizio Studios highly enough! Their creativity, attention to detail, and ability to bring a vision to life are unmatched. From the initial consultation to the final reveal, they make the entire design process seamless and enjoyable.",
+        name: "Carly Sablotny",
+        detail: "Homeowner",
+        initials: "CS"
     }
 ];
+
+const getGridClass = (index: number) => {
+    switch(index) {
+        case 0: return 'md:col-span-12 lg:col-span-8';
+        case 1: return 'md:col-span-6 lg:col-span-4';
+        case 2: return 'md:col-span-6 lg:col-span-4';
+        case 3: return 'md:col-span-6 lg:col-span-4';
+        case 4: return 'md:col-span-6 lg:col-span-4';
+        case 5: return 'md:col-span-12 lg:col-span-5';
+        case 6: return 'md:col-span-12 lg:col-span-7';
+        default: return 'md:col-span-12 lg:col-span-4';
+    }
+};
+
+const getTextSize = (index: number) => {
+    if (index === 0 || index === 6) return 'text-lg md:text-xl';
+    if (index === 5) return 'text-base md:text-lg';
+    return 'text-sm md:text-base';
+};
 ---
 
 <section id="reviews" class="py-16 md:py-32 px-4 md:px-6 bg-brand-black relative overflow-hidden reviews-section">
@@ -35,32 +78,47 @@ const reviews = [
                 <iconify-icon icon="solar:star-fall-minimalistic-2-linear" class="text-brand-gold" width="28"></iconify-icon>
             </div>
 
+            <!-- Google rating badge -->
+            <div class="review-attribution flex items-center justify-center gap-2 mb-6 md:mb-8">
+                <iconify-icon icon="logos:google-icon" width="14"></iconify-icon>
+                <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-cream">5.0 Rating</span>
+                <span class="flex items-center gap-0.5">
+                    {[...Array(5)].map(() => (
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="11"></iconify-icon>
+                    ))}
+                </span>
+                <span class="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-muted">Verified Google Reviews</span>
+            </div>
+
             <!-- Hero quote -->
             <h3 class="review-quote text-2xl sm:text-3xl md:text-5xl font-serif italic text-white leading-tight mb-6 md:mb-8 px-2 max-w-4xl mx-auto tracking-tighter">
-                <span class="review-word">Solstizio</span> <span class="review-word">completely</span> <span class="review-word">transformed</span> <span class="review-word">our</span> <span class="review-word">rental.</span> <span class="review-word">As</span> <span class="review-word review-highlight">first-time</span> <span class="review-word">investors,</span> <span class="review-word">we</span> <span class="review-word">had</span> <span class="review-word">no</span> <span class="review-word">idea</span> <span class="review-word">where</span> <span class="review-word">to</span> <span class="review-word">start</span> <span class="review-word">—</span> <span class="review-word">they</span> <span class="review-word">made</span> <span class="review-word">the</span> <span class="review-word">whole</span> <span class="review-word">process</span> <span class="review-word review-highlight">effortless.</span>
+                <span class="review-word">Solstizio</span> <span class="review-word">made</span> <span class="review-word">my</span> <span class="review-word">tiny</span> <span class="review-word">home</span> <span class="review-word">a</span> <span class="review-word">cozy</span> <span class="review-word">vacation</span> <span class="review-word">bungalow</span> <span class="review-word">—</span> <span class="review-word">they</span> <span class="review-word">got</span> <span class="review-word">me</span> <span class="review-word">to</span> <span class="review-word review-highlight">market</span> <span class="review-word review-highlight">fast</span> <span class="review-word">with</span> <span class="review-word">everything</span> <span class="review-word">it</span> <span class="review-word">needed.</span>
             </h3>
 
             <div class="review-attribution flex flex-col items-center gap-1 md:gap-2">
-                <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-cream">Sarah M.</span>
-                <span class="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-muted">First-Time STR Investor — Scottsdale, AZ</span>
+                <span class="text-[10px] md:text-xs font-bold uppercase tracking-widest text-brand-cream">Bonnie B.</span>
+                <span class="text-[9px] md:text-[10px] uppercase tracking-widest text-brand-muted">Short-Term Rental Owner — Verified Google Review</span>
             </div>
         </div>
 
-        <!-- Review cards grid -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-12 md:mt-16 pt-10 md:pt-12 border-t border-brand-border">
+        <!-- Review cards grid (Asymmetric) -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-12 md:mt-16 pt-10 md:pt-12 border-t border-brand-border">
             {reviews.map((review, index) => (
-                <div class="review-card group p-5 md:p-6 border border-brand-border bg-brand-panel/50 hover:bg-brand-panel transition-all duration-500 relative" style={`--review-delay: ${index * 0.12}s`}>
-                    <div class="flex gap-1 mb-3 md:mb-4">
-                        {[...Array(5)].map(() => (
-                            <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="14"></iconify-icon>
-                        ))}
+                <div class={`review-card group p-6 md:p-8 border border-brand-border bg-brand-panel/50 hover:bg-brand-panel transition-all duration-500 relative ${getGridClass(index)}`} style={`--review-delay: ${(index % 3) * 0.12}s`}>
+                    <div class="flex items-center justify-between mb-4 md:mb-6">
+                        <div class="flex gap-1">
+                            {[...Array(5)].map(() => (
+                                <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="16"></iconify-icon>
+                            ))}
+                        </div>
+                        <iconify-icon icon="logos:google-icon" width="16" class="opacity-80"></iconify-icon>
                     </div>
-                    <p class="text-sm text-gray-300 font-light leading-relaxed mb-4 md:mb-5">"{review.text}"</p>
-                    <div class="mt-auto flex items-center gap-3">
-                        <img src={review.headshot} alt={review.name} class="w-9 h-9 rounded-full object-cover bg-brand-border shrink-0">
+                    <p class={`text-gray-300 font-light leading-relaxed mb-6 md:mb-8 ${getTextSize(index)}`}>"{review.text}"</p>
+                    <div class="mt-auto flex items-center gap-4">
+                        <span class="w-10 h-10 rounded-full bg-brand-gold/15 border border-brand-gold/30 text-brand-gold text-xs font-bold tracking-wide flex items-center justify-center shrink-0">{review.initials}</span>
                         <div>
                             <span class="text-xs font-bold uppercase tracking-widest text-brand-cream block">{review.name}</span>
-                            <span class="text-[9px] uppercase tracking-widest text-brand-muted">{review.detail}</span>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-muted">{review.detail}</span>
                         </div>
                     </div>
                     <div class="absolute bottom-0 left-0 h-[2px] w-0 bg-brand-gold/30 group-hover:w-full transition-all duration-700"></div>

@@ -20,7 +20,7 @@
             
             <!-- Content -->
             <div class="exit-popup-header">
-                <span class="exit-popup-label">Wait — Before You Go</span>
+                <span class="exit-popup-label">Wait, Before You Go</span>
                 <h3 class="exit-popup-title">See What Your Project Will Cost</h3>
                 <p class="exit-popup-desc">
                     Get a free project estimate in under 60 seconds. Just answer a few quick questions.
@@ -75,8 +75,11 @@
     }
     
     .exit-popup-content {
-        background: #0A0A0A;
+        background: rgba(10, 10, 10, 0.6);
+        backdrop-filter: blur(24px);
         border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05), 0 20px 40px -10px rgba(0, 0, 0, 0.5);
+        border-radius: 1rem;
         padding: 2rem;
         position: relative;
     }
