@@ -20,10 +20,10 @@
             
             <!-- Content -->
             <div class="exit-popup-header">
-                <span class="exit-popup-label">Wait, Before You Go</span>
-                <h3 class="exit-popup-title">See What Your Project Will Cost</h3>
+                <span class="exit-popup-label">Free & No Commitment</span>
+                <h3 class="exit-popup-title">Get Your Estimate</h3>
                 <p class="exit-popup-desc">
-                    Get a free project estimate in under 60 seconds. Just answer a few quick questions.
+                    See what your project will cost in under 60 seconds. Just answer a few quick questions.
                 </p>
             </div>
             
@@ -278,7 +278,7 @@
         
         // Check session storage
         try {
-            if (sessionStorage.getItem('exitPopupShown') === 'true') {
+            if (sessionStorage.getItem('estimatePopupShown') === 'true') {
                 hasShown = true;
             }
         } catch(e) {}
@@ -288,7 +288,7 @@
             hasShown = true;
             
             try {
-                sessionStorage.setItem('exitPopupShown', 'true');
+                sessionStorage.setItem('estimatePopupShown', 'true');
             } catch(e) {}
             
             popup.classList.remove('exit-popup-hidden');
@@ -300,28 +300,10 @@
             document.body.style.overflow = '';
         }
         
-        // Exit intent - mouse leaves at top
-        document.addEventListener('mouseout', function(e) {
-            // Check if mouse left through top of window
-            if (e.clientY <= 5 && e.relatedTarget === null) {
-                showPopup();
-            }
-        });
-        
-        // Also trigger on visibility change (tab switching)
-        document.addEventListener('visibilitychange', function() {
-            if (document.visibilityState === 'hidden') {
-                // User is leaving/switching tabs - show on return
-                if (!hasShown) {
-                    document.addEventListener('visibilitychange', function onReturn() {
-                        if (document.visibilityState === 'visible') {
-                            document.removeEventListener('visibilitychange', onReturn);
-                            setTimeout(showPopup, 500);
-                        }
-                    });
-                }
-            }
-        });
+        // Show shortly after the page loads
+        if (!hasShown) {
+            setTimeout(showPopup, 1500);
+        }
         
         // Close handlers
         closeBtn?.addEventListener('click', hidePopup);

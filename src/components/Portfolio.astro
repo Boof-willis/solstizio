@@ -5,35 +5,37 @@ const projects = [
         title: "Clayhill",
         location: "Logan, OH",
         type: "Full Design & Install",
-        image: "/images/clayhill.avif",
-        size: "large",
-        delay: 0
+        image: "/images/clayhill.avif"
     },
     {
         title: "Leveille Luxury",
         location: "Lawrenceburg, KY",
         type: "Full Design & Install",
-        image: "/images/leveille-luxury.avif",
-        size: "medium",
-        delay: 100,
-        offset: true
+        image: "/images/leveille-luxury.avif"
     },
     {
         title: "Pintail",
         location: "Flagstaff, AZ",
         type: "Turnkey Styling",
-        image: "/images/pintail-flagstaff.avif",
-        size: "medium",
-        delay: 0
+        image: "/images/pintail-flagstaff.avif"
     },
     {
         title: "Casa Serenity",
         location: "Scottsdale, AZ",
         type: "Interior Design",
-        image: "/images/casa-serenity.avif",
-        size: "large",
-        delay: 100,
-        offset: true
+        image: "/images/casa-serenity.avif"
+    },
+    {
+        title: "Millards",
+        location: "California",
+        type: "Full Design & Install",
+        image: "/images/Millards Interior 1.jpeg"
+    },
+    {
+        title: "The Balboa",
+        location: "Florida",
+        type: "Full Design & Install",
+        image: "/images/the-balboa.avif"
     }
 ];
 ---
@@ -62,14 +64,14 @@ const projects = [
             ))}
         </div>
 
-        <!-- Desktop Masonry Grid -->
-        <div class="hidden md:grid grid-cols-12 gap-8">
+        <!-- Desktop Gallery Grid -->
+        <div class="hidden md:grid grid-cols-2 gap-8 lg:gap-10">
             {projects.map((project, index) => (
                 <div 
-                    class={`portfolio-card group ${project.size === 'large' ? 'lg:col-span-7' : 'lg:col-span-5'} ${project.offset ? 'lg:mt-24' : ''}`}
-                    style={`--card-delay: ${index * 0.15}s`}
+                    class="portfolio-card group"
+                    style={`--card-delay: ${index * 0.12}s`}
                 >
-                    <div class={`portfolio-image-container img-zoom-container ${project.size === 'large' ? 'aspect-[16/10]' : 'aspect-[4/3]'} bg-brand-panel relative`}>
+                    <div class="portfolio-image-container img-zoom-container aspect-[4/3] bg-brand-panel relative">
                         <!-- Overlay gradient -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity z-10 duration-700"></div>
                         
