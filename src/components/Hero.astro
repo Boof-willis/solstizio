@@ -5,8 +5,12 @@
 <header class="relative h-[100dvh] w-full flex items-center justify-center overflow-hidden">
     <!-- Background Image -->
     <div class="absolute inset-0 z-0">
-        <!-- Gradient Overlay: Dark bottom -> 50% dark middle -> Light darker top for nav contrast -->
-        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/50 to-brand-black/20 z-10"></div>
+        <!-- Gradient Overlay: Dark bottom -> dark middle -> lighter top for nav contrast -->
+        <div class="absolute inset-0 bg-gradient-to-t from-brand-black via-brand-black/60 to-brand-black/30 z-10"></div>
+        <!-- Left-side scrim behind the text column (desktop) -->
+        <div class="hidden md:block absolute inset-0 bg-gradient-to-r from-black/55 via-black/15 to-transparent z-10"></div>
+        <!-- Extra darkening for bright images (mobile, where text spans the frame) -->
+        <div class="md:hidden absolute inset-0 bg-black/30 z-10"></div>
         <!-- Mobile Hero Image Carousel -->
         <div class="md:hidden absolute inset-0 w-full h-full">
             <img
@@ -61,7 +65,7 @@
             <div class="overflow-hidden">
                 <p class="hero-label text-xs md:text-xs font-bold tracking-[0.2em] text-gray-300 opacity-80 uppercase mb-4 flex items-center gap-3">
                     <span class="hero-line w-8 md:w-8 h-[1px] bg-gray-300"></span>
-                    <span class="hero-label-text">Design · Procurement · Installation</span>
+                    <span class="hero-label-text">Interior Design for Short-Term Rentals</span>
                 </p>
             </div>
             
@@ -70,7 +74,7 @@
                     <span class="hero-word-line">Turn Your Property Into a Rental</span>
                     <span class="hero-word-line">Guests Can't Scroll Past.</span>
                 </h1>
-                <p class="text-brand-cream italic font-normal opacity-90 hero-word-italic text-xl sm:text-2xl md:text-3xl font-serif tracking-tight mt-3 md:mt-4">Turnkey Design &amp; Setup</p>
+                <p class="text-brand-cream italic font-normal opacity-90 hero-word-italic text-2xl sm:text-3xl md:text-4xl font-serif tracking-tight mt-3 md:mt-4">Turnkey Interior Design &amp; Setup</p>
             </div>
 
             <div class="hero-description max-w-md mt-6 md:mt-8 border-l border-white/20 pl-6">
@@ -175,6 +179,17 @@
         }
     }
     
+    /* Legibility: soft shadows so text holds up over bright image frames */
+    .hero-title,
+    .hero-word-italic {
+        text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.45);
+    }
+
+    .hero-label,
+    .hero-description p {
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.6), 0 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
     /* Hero Title Line Animation */
     .hero-word-line {
         display: block;

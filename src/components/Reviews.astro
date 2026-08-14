@@ -102,7 +102,7 @@ const getTextSize = (index: number) => {
         </div>
 
         <!-- Review cards grid (Asymmetric) -->
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-12 md:mt-16 pt-10 md:pt-12 border-t border-brand-border">
+        <div class="reviews-grid grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 mt-12 md:mt-16 pt-10 md:pt-12 border-t border-brand-border">
             {reviews.map((review, index) => (
                 <div class={`review-card group p-6 md:p-8 border border-brand-border bg-brand-panel/50 hover:bg-brand-panel transition-all duration-500 relative ${getGridClass(index)}`} style={`--review-delay: ${(index % 3) * 0.12}s`}>
                     <div class="flex items-center justify-between mb-4 md:mb-6">
@@ -222,9 +222,9 @@ const getTextSize = (index: number) => {
         transform: translateY(25px);
     }
 
-    .reviews-section.in-view .review-card {
+    .reviews-grid.in-view .review-card {
         animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        animation-delay: calc(1.6s + var(--review-delay));
+        animation-delay: var(--review-delay);
     }
     
     @keyframes fadeUp {
@@ -237,21 +237,22 @@ const getTextSize = (index: number) => {
 
 <script is:inline>
     document.addEventListener('DOMContentLoaded', function() {
-        const section = document.querySelector('.reviews-section');
-        
-        if (section) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('in-view');
-                    }
-                });
-            }, { 
-                threshold: 0,
-                rootMargin: "0px 0px -25% 0px" 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
             });
-            
-            observer.observe(section);
-        }
+        }, { 
+            threshold: 0,
+            rootMargin: "0px 0px 10% 0px" 
+        });
+
+        const section = document.querySelector('.reviews-section');
+        if (section) observer.observe(section);
+
+        // Cards animate on their own trigger so they don't wait for the header choreography
+        const grid = document.querySelector('.reviews-grid');
+        if (grid) observer.observe(grid);
     });
 </script>
