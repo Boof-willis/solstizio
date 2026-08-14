@@ -24,11 +24,11 @@
         <!-- Progress Bar -->
         <div class="mb-8 md:mb-12 estimator-progress">
             <div class="flex items-center justify-between mb-3">
-                <span id="step-label" class="text-[10px] uppercase tracking-widest text-gray-500">Step 1 of 3</span>
-                <span id="step-percent" class="text-[10px] uppercase tracking-widest text-brand-gold">33%</span>
+                <span id="step-label" class="text-[10px] uppercase tracking-widest text-gray-500">Step 1 of 4</span>
+                <span id="step-percent" class="text-[10px] uppercase tracking-widest text-brand-gold">25%</span>
             </div>
             <div class="h-[2px] w-full bg-white/10 rounded-full overflow-hidden">
-                <div id="progress-bar" class="h-full bg-brand-gold rounded-full transition-all duration-700 ease-out" style="width: 33%"></div>
+                <div id="progress-bar" class="h-full bg-brand-gold rounded-full transition-all duration-700 ease-out" style="width: 25%"></div>
             </div>
         </div>
 
@@ -101,8 +101,37 @@
                 </div>
             </div>
 
-            <!-- Step 3: Contact Info -->
+            <!-- Step 3: Launch Timeline -->
             <div id="step-3" class="estimator-step">
+                <div class="bg-black/60 backdrop-blur-2xl shadow-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] p-6 md:p-10">
+                    <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">When are you looking to launch?</h3>
+                    <p class="text-sm text-gray-400 font-light mb-8">Choose the window that best matches your timeline.</p>
+
+                    <div class="space-y-3">
+                        <button type="button" class="launch-option group w-full text-left border border-white/20 hover:border-brand-gold px-5 py-4 md:px-6 md:py-5 transition-all duration-300 cursor-pointer bg-black/40" data-value="ASAP / Property already purchased">
+                            <span class="text-lg md:text-xl font-serif text-white block tracking-tight">ASAP / Property already purchased</span>
+                        </button>
+                        <button type="button" class="launch-option group w-full text-left border border-white/20 hover:border-brand-gold px-5 py-4 md:px-6 md:py-5 transition-all duration-300 cursor-pointer bg-black/40" data-value="Within 1–3 months">
+                            <span class="text-lg md:text-xl font-serif text-white block tracking-tight">Within 1–3 months</span>
+                        </button>
+                        <button type="button" class="launch-option group w-full text-left border border-white/20 hover:border-brand-gold px-5 py-4 md:px-6 md:py-5 transition-all duration-300 cursor-pointer bg-black/40" data-value="3–6 months">
+                            <span class="text-lg md:text-xl font-serif text-white block tracking-tight">3–6 months</span>
+                        </button>
+                        <button type="button" class="launch-option group w-full text-left border border-white/20 hover:border-brand-gold px-5 py-4 md:px-6 md:py-5 transition-all duration-300 cursor-pointer bg-black/40" data-value="Just researching">
+                            <span class="text-lg md:text-xl font-serif text-white block tracking-tight">Just researching</span>
+                        </button>
+                    </div>
+
+                    <div class="mt-8 flex justify-between">
+                        <button type="button" id="back-3" class="est-back-btn text-sm text-gray-500 hover:text-white transition-colors duration-300 flex items-center gap-2 cursor-pointer">
+                            <iconify-icon icon="solar:arrow-left-linear" width="14"></iconify-icon> Back
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Contact Info -->
+            <div id="step-4" class="estimator-step">
                 <div class="bg-black/60 backdrop-blur-2xl shadow-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] p-6 md:p-10">
                     <h3 class="text-xl md:text-2xl font-serif text-white mb-2 tracking-tight">Where should we send your estimate?</h3>
                     <p class="text-sm text-gray-400 font-light mb-8">Enter your details below and we'll email your custom project estimate instantly.</p>
@@ -135,7 +164,7 @@
                     </div>
 
                     <div class="mt-8 flex justify-between items-center">
-                        <button type="button" id="back-3" class="est-back-btn text-sm text-gray-500 hover:text-white transition-colors duration-300 flex items-center gap-2 cursor-pointer">
+                        <button type="button" id="back-4" class="est-back-btn text-sm text-gray-500 hover:text-white transition-colors duration-300 flex items-center gap-2 cursor-pointer">
                             <iconify-icon icon="solar:arrow-left-linear" width="14"></iconify-icon> Back
                         </button>
                         <button type="button" id="submit-estimate" class="est-next-btn bg-brand-gold hover:bg-brand-gold/80 text-black px-8 py-4 text-[10px] font-bold uppercase tracking-[0.15em] transition-all duration-500 cursor-pointer flex items-center gap-2 active:scale-[0.98]">
@@ -185,8 +214,8 @@
                 </div>
             </div>
 
-            <!-- Step 4: Results -->
-            <div id="step-4" class="estimator-step">
+            <!-- Step 5: Results -->
+            <div id="step-5" class="estimator-step">
                 <div class="bg-black/60 backdrop-blur-2xl shadow-2xl border border-white/20 shadow-[inset_0_1px_0_rgba(255,255,255,0.2)] p-6 md:p-10">
                     <div class="text-center mb-8">
                         <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-brand-gold/10 border border-brand-gold/20 mb-4">
@@ -261,6 +290,7 @@
             <input type="hidden" name="location" id="hf-location">
             <input type="hidden" name="sqft" id="hf-sqft">
             <input type="hidden" name="backyard" id="hf-backyard">
+            <input type="hidden" name="launch_timeline" id="hf-launch">
             <input type="hidden" name="design_fee" id="hf-design-fee">
             <input type="hidden" name="backyard_fee" id="hf-backyard-fee">
             <input type="hidden" name="furnish_low" id="hf-furnish-low">
@@ -365,6 +395,11 @@
         color: #8A9A7B;
     }
 
+    .launch-option.selected {
+        border-color: #8A9A7B;
+        background: rgba(138, 154, 123, 0.08);
+    }
+
     /* Sqft pill selected state */
     .sqft-pill.selected {
         border-color: #8A9A7B;
@@ -432,14 +467,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     let currentStep = 1;
-    let data = { sqft: 0, backyard: false, name: '', email: '', phone: '', location: '' };
+    let data = { sqft: 0, backyard: false, launch: '', name: '', email: '', phone: '', location: '' };
 
     const steps = {
         1: document.getElementById('step-1'),
         2: document.getElementById('step-2'),
         3: document.getElementById('step-3'),
+        4: document.getElementById('step-4'),
         'loading': document.getElementById('step-loading'),
-        4: document.getElementById('step-4')
+        5: document.getElementById('step-5')
     };
 
     function goToStep(num, direction) {
@@ -468,8 +504,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateProgress() {
-        const totalSteps = 3;
-        const isDone = currentStep === 'loading' || currentStep >= 4;
+        const totalSteps = 4;
+        const isDone = currentStep === 'loading' || currentStep >= 5;
         const displayStep = isDone ? totalSteps : Math.min(currentStep, totalSteps);
         const pct = isDone ? 100 : Math.round((displayStep / totalSteps) * 100);
         document.getElementById('step-label').textContent = isDone
@@ -550,9 +586,20 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Step 3: launch timeline
+    document.querySelectorAll('.launch-option').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            document.querySelectorAll('.launch-option').forEach(function(b) { b.classList.remove('selected'); });
+            this.classList.add('selected');
+            data.launch = this.dataset.value;
+            setTimeout(function() { goToStep(4, 'forward'); }, 400);
+        });
+    });
+
     // Back buttons
     document.getElementById('back-2').addEventListener('click', function() { goToStep(1, 'back'); });
     document.getElementById('back-3').addEventListener('click', function() { goToStep(2, 'back'); });
+    document.getElementById('back-4').addEventListener('click', function() { goToStep(3, 'back'); });
 
     // ── Webhook URL ──
     var WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/0mArnrVrlznFEyZADuyO/webhook-trigger/f0813ea4-bca0-4f6f-8a8d-58a63bfe900f';
@@ -583,6 +630,7 @@ document.addEventListener('DOMContentLoaded', function() {
             location: data.location,
             sqft: sqft,
             backyard: data.backyard ? 'yes' : 'no',
+            launch_timeline: data.launch,
             design_fee: designFee,
             backyard_fee: backyardFee,
             furnish_low: furnishLow,
@@ -604,6 +652,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('hf-location').value = payload.location;
         document.getElementById('hf-sqft').value = payload.sqft;
         document.getElementById('hf-backyard').value = payload.backyard ? 'yes' : 'no';
+        document.getElementById('hf-launch').value = payload.launch_timeline || '';
         document.getElementById('hf-design-fee').value = payload.design_fee;
         document.getElementById('hf-backyard-fee').value = payload.backyard_fee;
         document.getElementById('hf-furnish-low').value = payload.furnish_low;
@@ -677,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var elapsed = Date.now() - loadStart;
             var remaining = Math.max(0, LOADING_MIN_MS - elapsed);
             setTimeout(function() {
-                goToStep(4, 'forward');
+                goToStep(5, 'forward');
                 btn.disabled = false;
                 btn.querySelector('span').textContent = 'See My Estimate';
             }, remaining);

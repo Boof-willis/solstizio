@@ -65,30 +65,56 @@
                 </p>
             </div>
             
-            <h1 class="hero-title text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif font-light tracking-tighter leading-[0.95] text-white">
-                <span class="hero-word">Turnkey</span> <span class="hero-word">STR</span> <span class="hero-word">Interior</span> <br>
-                <span class="text-brand-cream italic font-normal opacity-90 hero-word-italic">Design & Setup.</span>
-            </h1>
+            <div>
+                <h1 class="hero-title text-[2rem] sm:text-4xl md:text-5xl lg:text-6xl font-serif font-light tracking-tighter leading-[0.95] text-white">
+                    <span class="hero-word-line">Turn Your Property Into a Rental</span>
+                    <span class="hero-word-line">Guests Can't Scroll Past.</span>
+                </h1>
+                <p class="text-brand-cream italic font-normal opacity-90 hero-word-italic text-xl sm:text-2xl md:text-3xl font-serif tracking-tight mt-3 md:mt-4">Turnkey Design &amp; Setup</p>
+            </div>
 
             <div class="hero-description max-w-md mt-6 md:mt-8 border-l border-white/20 pl-6">
                 <p class="text-base md:text-base text-gray-300 font-light leading-relaxed">
-                    <span class="text-white font-medium">Your rental, designed to stand out.</span> We're an interior design studio for short-term rentals. We design, furnish, and style your space top to bottom, so it photographs beautifully and earns five-star reviews from your very first guest.
+                    We design, furnish, install and style your short-term rental from top to bottom, so you can launch faster, stand out in your market, and start earning.
                 </p>
                 <a href="#estimate" class="hidden md:inline-block mt-8 bg-white text-black px-8 py-3 rounded-none text-xs font-bold uppercase tracking-widest transition-all duration-300 hover:bg-brand-gold hover:text-black active:scale-[0.98]">
                     Get Your Estimate
                 </a>
+
+                <!-- Google rating badge (desktop) -->
+                <a href="#reviews" class="hero-google-badge hidden md:flex items-center gap-2 mt-5 group w-fit">
+                    <iconify-icon icon="logos:google-icon" width="14"></iconify-icon>
+                    <span class="flex items-center gap-0.5">
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="11"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="11"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="11"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="11"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="11"></iconify-icon>
+                    </span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-white drop-shadow-md">5.0</span>
+                    <span class="text-[10px] uppercase tracking-widest text-white/70 group-hover:text-white transition-colors duration-300 drop-shadow-md">Verified Google Reviews</span>
+                </a>
             </div>
             
             <!-- Mobile CTA & Social Proof -->
-            <div class="md:hidden flex flex-col items-start gap-6 hero-mobile-cta">
+            <div class="md:hidden flex flex-col items-start gap-4 hero-mobile-cta">
                 <a href="#estimate" class="inline-block mt-4 bg-white text-black px-10 py-4 rounded-none transition-all duration-300 hover:bg-brand-gold hover:text-black active:scale-[0.98]">
                     <span class="text-xs font-bold tracking-widest uppercase">Get Your Estimate</span>
                 </a>
 
-                <!-- Hidden on mobile to save space -->
-                <div class="hidden items-center gap-4">
-                    <span class="text-[11px] uppercase tracking-widest text-white/90 font-medium drop-shadow-md">Designed for all major STR platforms</span>
-                </div>
+                <!-- Google rating badge (mobile) -->
+                <a href="#reviews" class="hero-google-badge flex items-center gap-2">
+                    <iconify-icon icon="logos:google-icon" width="13"></iconify-icon>
+                    <span class="flex items-center gap-0.5">
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="10"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="10"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="10"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="10"></iconify-icon>
+                        <iconify-icon icon="solar:star-bold" class="text-brand-gold" width="10"></iconify-icon>
+                    </span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-white drop-shadow-md">5.0</span>
+                    <span class="text-[9px] uppercase tracking-widest text-white/70 drop-shadow-md">Verified Google Reviews</span>
+                </a>
             </div>
         </div>
 
@@ -149,17 +175,16 @@
         }
     }
     
-    /* Hero Title Word Animation */
-    .hero-word {
-        display: inline-block;
+    /* Hero Title Line Animation */
+    .hero-word-line {
+        display: block;
         opacity: 0;
         transform: translateY(40px);
         animation: wordReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     }
     
-    .hero-word:nth-child(1) { animation-delay: 0.4s; }
-    .hero-word:nth-child(2) { animation-delay: 0.5s; }
-    .hero-word:nth-child(3) { animation-delay: 0.6s; }
+    .hero-word-line:nth-child(1) { animation-delay: 0.4s; }
+    .hero-word-line:nth-child(2) { animation-delay: 0.55s; }
     
     .hero-word-italic {
         display: inline-block;
