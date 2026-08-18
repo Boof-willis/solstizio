@@ -722,6 +722,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // result UI so we don't tip them off.
         var sendPromise = isBot ? Promise.resolve() : fireWebhook(payload);
 
+        // Fire the Google Ads conversion in lockstep with the real webhook —
+        // bots that reach this point never actually convert.
+        if (!isBot && typeof gtag === 'function') {
+            gtag('event', 'conversion', {'send_to': 'AW-18039082621/iteJCLDJ7-McEP2c2plD'});
+        }
+
         sendPromise.then(function() {
             var elapsed = Date.now() - loadStart;
             var remaining = Math.max(0, LOADING_MIN_MS - elapsed);
