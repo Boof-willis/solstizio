@@ -147,12 +147,14 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div class="relative">
-                                <input type="tel" id="est-phone" placeholder="Phone (optional)" class="w-full bg-black/40 border border-white/20 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-400 focus:outline-none transition-colors duration-300">
+                                <input type="tel" id="est-phone" required inputmode="tel" autocomplete="tel" placeholder="Phone Number" class="w-full bg-black/40 border border-white/20 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-400 focus:outline-none transition-colors duration-300">
                             </div>
                             <div class="relative">
                                 <input type="text" id="est-location" placeholder="Property City / State" class="w-full bg-black/40 border border-white/20 focus:border-brand-gold px-4 py-3.5 text-white text-sm placeholder-gray-400 focus:outline-none transition-colors duration-300">
                             </div>
                         </div>
+
+                        <p id="est-form-error" class="hidden text-xs text-red-400 mt-1" role="alert"></p>
 
                         <!-- Honeypot fields: hidden from real users, only bots fill these -->
                         <div class="hp-wrap" aria-hidden="true">
@@ -160,6 +162,10 @@
                             <input type="text" id="est-website" name="website" tabindex="-1" autocomplete="off">
                             <label for="est-company">Company</label>
                             <input type="text" id="est-company" name="company" tabindex="-1" autocomplete="off">
+                            <label for="est-fax">Fax</label>
+                            <input type="text" id="est-fax" name="fax" tabindex="-1" autocomplete="off">
+                            <label for="est-confirm-email">Confirm Email</label>
+                            <input type="email" id="est-confirm-email" name="confirm_email" tabindex="-1" autocomplete="off">
                         </div>
                     </div>
 
@@ -672,35 +678,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Step 3: submit
+    // ── Field validation ──
+    function isValidEmail(email) {
+        // Requires a local part, an @, a domain, and a real-looking TLD.
+        return /^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/.test(email);
+    }
+
+    function isValidPhone(phone) {
+        // Accepts formats like (216) 904-2497, 216-904-2497, +1 216 904 2497.
+        var digits = phone.replace(/\D/g, '');
+        if (digits.length < 10 || digits.length > 15) return false;
+        // Reject obviously fake numbers like 0000000000 or 1111111111.
+        if (/^(\d)\1+$/.test(digits)) return false;
+        return true;
+    }
+
+    function markInvalid(input, shouldFocus) {
+        input.style.borderColor = '#ef4444';
+        if (shouldFocus) input.focus();
+        setTimeout(function() { input.style.borderColor = ''; }, 2500);
+    }
+
+    function showFormError(message) {
+        var el = document.getElementById('est-form-error');
+        el.textContent = message;
+        el.classList.remove('hidden');
+        setTimeout(function() { el.classList.add('hidden'); }, 4000);
+    }
+
+    // Step 4: submit
     document.getElementById('submit-estimate').addEventListener('click', function() {
-        var name = document.getElementById('est-name').value.trim();
-        var email = document.getElementById('est-email').value.trim();
-        if (!name || !email || !email.includes('@')) {
-            if (!name) {
-                document.getElementById('est-name').style.borderColor = '#ef4444';
-                document.getElementById('est-name').focus();
-            }
-            if (!email || !email.includes('@')) {
-                document.getElementById('est-email').style.borderColor = '#ef4444';
-                if (name) document.getElementById('est-email').focus();
-            }
-            setTimeout(function() {
-                document.getElementById('est-name').style.borderColor = '';
-                document.getElementById('est-email').style.borderColor = '';
-            }, 2000);
+        var nameInput = document.getElementById('est-name');
+        var emailInput = document.getElementById('est-email');
+        var phoneInput = document.getElementById('est-phone');
+        var name = nameInput.value.trim();
+        var email = emailInput.value.trim();
+        var phone = phoneInput.value.trim();
+
+        var errors = [];
+        if (!name) errors.push({ input: nameInput, msg: 'Please enter your name.' });
+        if (!email) {
+            errors.push({ input: emailInput, msg: 'Please enter your email address.' });
+        } else if (!isValidEmail(email)) {
+            errors.push({ input: emailInput, msg: 'Please enter a valid email address.' });
+        }
+        if (!phone) {
+            errors.push({ input: phoneInput, msg: 'Please enter your phone number.' });
+        } else if (!isValidPhone(phone)) {
+            errors.push({ input: phoneInput, msg: 'Please enter a valid phone number.' });
+        }
+
+        if (errors.length) {
+            errors.forEach(function(err, i) { markInvalid(err.input, i === 0); });
+            showFormError(errors[0].msg);
             return;
         }
+
         data.name = name;
         data.email = email;
-        data.phone = document.getElementById('est-phone').value.trim();
+        data.phone = phone;
         data.location = document.getElementById('est-location').value.trim();
 
         // ── Bot filtering ──
-        // 1. Honeypot fields: if filled, it's a bot.
-        var hpWebsite = document.getElementById('est-website').value;
-        var hpCompany = document.getElementById('est-company').value;
-        var isBot = !!(hpWebsite || hpCompany);
+        // 1. Honeypot fields: if any are filled, it's a bot.
+        var isBot = !!(
+            document.getElementById('est-website').value ||
+            document.getElementById('est-company').value ||
+            document.getElementById('est-fax').value ||
+            document.getElementById('est-confirm-email').value
+        );
         // 2. Time-trap: real users take more than a few seconds to fill the form.
         if (Date.now() - formLoadTime < MIN_FILL_MS) isBot = true;
 
